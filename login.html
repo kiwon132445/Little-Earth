@@ -1,38 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Login Page</title>
-<link rel="stylesheet" href="./CSS/loginstyle.css">
-</head>
-<body>
-    <div id="loginCenter">
-        <div>
-            <form action="?" method="GET">
-                <fieldset>
-                    <div class="bottomMargin">
-                        <label for="username">Username:</label>
-                        <input id="username" type="text" name="username" required pattern="[A-Za-z]{2, 15}">
-                    </div>
+    <head>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyBL4cBe-0IF2uyjzx40gGjPFNDovvTjCrg",
+              authDomain: "index-caf54.firebaseapp.com",
+              databaseURL: "https://index-caf54.firebaseio.com",
+              projectId: "index-caf54",
+              storageBucket: "index-caf54.appspot.com",
+              messagingSenderId: "69011595119"
+            };
+            firebase.initializeApp(config);
+  
+        </script>
+        <meta charset="utf-8">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="./CSS/loginstyle.css">
+    </head>
+    <body>
+        <div id="loginCenter">
+            <div class="center">
+                <div id="firebaseui-auth-container"></div>
+                <div id="loader">Loading...</div>
+            </div>
 
-                    <div class="bottomMargin">
-                        <label for="password">Password:</label>
-                        <input id="password" type="password" name="password" required pattern="[A-Za-z]{5, 20}">
-                    </div>
-                    <input id="login" type="submit" value="Login">
-                </fieldset>
-            </form>
-            
-        </div>
-        <div id="closeButton">
             <input id="close" type="image" src="./CSS/images/close-icon-grey-large.png" alt="close">
         </div>
-    </div>
-    
-    <footer>
-        <div>
-            <h3>Made by: Team 30</h3>
-        </div>
-    </footer>
-</body>
+        <footer>
+            <div>
+                <h3>Made by: Team 30</h3>
+            </div>
+        </footer>
+        <script>
+                // Initialize the FirebaseUI Widget using Firebase.
+                var ui = new firebaseui.auth.AuthUI(firebase.auth());
+                </script>
+                <script>
+                var uiConfig = {
+                  callbacks: {
+                    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                      // User successfully signed in.
+                      // Return type determines whether we continue the redirect automatically
+                      // or whether we leave that to developer to handle.
+                      return true;
+                    },
+                    uiShown: function() {
+                      // The widget is rendered.
+                      // Hide the loader.
+                      document.getElementById('loader').style.display = 'none';
+                    }
+                  },
+                  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+                  signInFlow: 'popup',
+                  signInSuccessUrl: 'main.html',
+                  signInOptions: [
+                    // Leave the lines as is for the providers you want to offer your users.
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                  ],
+                  // Terms of service url.
+                  tosUrl: 'main.html',
+                  // Privacy policy url.
+                  privacyPolicyUrl: 'main.html'
+                };
+                
+                // The start method will wait until the DOM is loaded.
+                ui.start('#firebaseui-auth-container', uiConfig);
+                </script>
+    </body>
 </html>

@@ -10,30 +10,22 @@ body {
 
 #loginCenter {
     margin-top:20pt;
-    background-color: white;
     border-radius: 10%;
-    width:30%;
-    height:70vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    width:100%;
+    display:grid;
+    grid-template-columns: 40px [centerLeft]auto[centerRight] 40px;
+    grid-template-rows: 100pt [centerTop]500pt[centerBottom] auto;
 }
-.bottomMargin {
-    margin-bottom:10pt;
+.center {
+    grid-column-start: centerLeft;
+    grid-row-start: centerTop;
 }
-#login {
-    width: 100pt;
-    height:30pt;
-}
-#closeButton {
-    display:flex;
-    align-self: flex-start;
-    justify-content: flex-end;
-}
+
 #close {
     border-radius: 15%;
     width:30pt;
     height:30pt;
+    grid-column-start: centerRight;
 }
 
 footer {
