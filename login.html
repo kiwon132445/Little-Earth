@@ -6,15 +6,29 @@
 <link rel="stylesheet" href="./CSS/loginstyle.css">
 </head>
 <body>
-    <div>
+    <div id="loginCenter">
+        <div>
+            <form action="?" method="GET">
+                <fieldset>
+                    <div class="bottomMargin">
+                        <label for="username">Username:</label>
+                        <input id="username" type="text" name="username" required pattern="[A-Za-z]{2, 15}">
+                    </div>
 
+                    <div class="bottomMargin">
+                        <label for="password">Password:</label>
+                        <input id="password" type="password" name="password" required pattern="[A-Za-z]{5, 20}">
+                    </div>
+                    <input id="login" type="submit" value="Login">
+                </fieldset>
+            </form>
+            
+        </div>
+        <div id="closeButton">
+            <input id="close" type="image" src="./CSS/images/close-icon-grey-large.png" alt="close">
+        </div>
     </div>
-    <div>
-        <input id="login" type="button" value="Login">
-    </div>
-    <div>
-        <input id="close" type="image" src="./CSS/images/close-icon-grey-large.png" alt="close">
-    </div>
+    
     <footer>
         <div>
             <h3>Made by: Team 30</h3>
