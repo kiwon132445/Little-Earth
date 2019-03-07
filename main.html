@@ -3,8 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Little Earth</title>
+    <link rel="stylesheet" href="./CSS/mainstyle.css">
+  <style>
+    
+    #container{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    
+    #mainTop{
+      height: 33vh;
+    }
+    
+    #mainMiddle{
+      height: 33vh;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    
+    #mainBottom{
+      height: 33vh;
+    }
+    
+    div {
+      border: 1px solid yellow;
+    }
+    
+    .middle{
+      border: 1px solid red;
+      width: 33%;
+    }
+    
+    #middleCentre{
+      flex-grow: 2;
+    }
+    .earthImgContainer{
+      height: 33vh;
+    }
+    
+    #earthImg{
+      width: 100%;
+      margin-top: -5%;
+      clip-path: circle(43%);
+      text-align: center;
+    }
+    
+    #middleRight{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    
+    .actionBtn{
+      border: 1px solid cyan;
+      padding: 5%;
+      margin: 5%;
+      height: 30px;
+      width: 30px;
+      background-size: cover;
+      border-radius: 20px;
+      float: right;
+      clear: right;
+      
+    }
+    .actionElectricity{
+      background-image: url("CSS/images/electricity-icon.png");
+    }
+    
+    .actionWater{
+      background-image: url("CSS/images/water-icon.png");
+    }
+    
+    .actionBiodiversity{
+      background-image: url("CSS/images/ladybug-icon.png");
+    }
+    
+  </style>
 </head>
 <body>
-    
+  <div id="container">
+    <div id="mainTop"></div>
+    <div id="mainMiddle">
+      <div class="middleLeft middle"></div>
+      <div class="middleCentre middle">
+        <div class="earthImgContainer">
+          <img id="earthImg" src="CSS/images/earth.jpg" alt="Main character. Little Earth.">
+        </div>
+      </div>
+      <div class="middleRight middle">
+        <div class="actionBtn actionElectricity">
+        </div>
+        <div class="actionBtn actionWater"></div>
+        <div class="actionBtn actionBiodiversity"></div>
+      </div>
+    </div>
+    <div id="mainBottom"></div>
+  </div>  
 </body>
 </html>
