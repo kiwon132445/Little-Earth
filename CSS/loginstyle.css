@@ -1,0 +1,26 @@
+html {
+    background-image: url(./images/i98vXju.jpg);
+    background-size: cover;
+    background-repeat: no-repeat
+}
+body {
+    display:flex;
+    justify-content: space-between;
+}
+#login {
+    width: 100pt;
+    height:30pt;
+    margin-top:200pt;
+}
+#close {
+    border-radius: 15%;
+    width:50pt;
+    height:50pt;
+}
+footer {
+    position: fixed;
+    left:0;
+    bottom: 0;
+    width:100%;
+    color:greenyellow;
+}
