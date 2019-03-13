@@ -33,12 +33,12 @@
     }
     
     /*---LEFT COLUMN-------------------------*/
-    #middleLeft {
+    .middleLeft {
       
     }
     
     /*---CENTRE COLUMN-------------------------*/
-    #middleCentre{
+    .middleCentre{
       
     }
     .earthImgContainer{
@@ -52,21 +52,26 @@
     }
     
     /*---RIGHT COLUMN-------------------------*/
-    #middleRight{
-
+    .middleRight{
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
     }
     
     .actionBtn{
-      border: 1px solid cyan;
-      padding: 5%;
-      margin: 5%;
-      height: 30px;
-      width: 30px;
+      border: 1px solid silver;
+      height: 50px;
+      width: 50px;
       background-size: cover;
       border-radius: 20px;
-      float: right;
-      clear: right;
-      
+      box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      transition: all 0.2s ease 0s;
+    }
+    
+    .actionBtn:hover{
+      transform: translateY(-5px);
+      box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
     }
     .actionElectricity{
       background-image: url("CSS/images/electricity-icon.png");
