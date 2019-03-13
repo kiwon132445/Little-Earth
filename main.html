@@ -7,53 +7,53 @@
   <style>
     
     #container{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+
     }
     
+    /***TOP ROW********************************/
     #mainTop{
-      height: 33vh;
+      height: 25vh;
     }
     
+    /***MIDDLE ROW*****************************/
     #mainMiddle{
-      height: 33vh;
+      height: 50vh;
       display: flex;
-      justify-content: space-between;
-      flex-direction: row;
+      justify-content: space-around;
     }
     
+    /***BOTTOM ROW*****************************/
     #mainBottom{
-      height: 33vh;
+      height: 25vh;
     }
     
-    div {
-      border: 1px solid yellow;
-    }
-    
+    /*For debug only*/
     .middle{
       border: 1px solid red;
-      width: 33%;
     }
     
+    /*---LEFT COLUMN-------------------------*/
+    #middleLeft {
+      
+    }
+    
+    /*---CENTRE COLUMN-------------------------*/
     #middleCentre{
-      flex-grow: 2;
+      
     }
     .earthImgContainer{
-      height: 33vh;
+
     }
     
     #earthImg{
-      width: 100%;
-      margin-top: -5%;
-      clip-path: circle(43%);
-      text-align: center;
+      width: auto;
+      height: 50vh;
+      clip-path: circle(50%);
     }
     
+    /*---RIGHT COLUMN-------------------------*/
     #middleRight{
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
+
     }
     
     .actionBtn{
@@ -93,8 +93,7 @@
         </div>
       </div>
       <div class="middleRight middle">
-        <div class="actionBtn actionElectricity">
-        </div>
+        <div class="actionBtn actionElectricity"></div>
         <div class="actionBtn actionWater"></div>
         <div class="actionBtn actionBiodiversity"></div>
       </div>
