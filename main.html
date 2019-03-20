@@ -90,6 +90,47 @@
             .actionBiodiversity{
               background-image: url("CSS/images/ladybug-icon.png");
             }
+            /*popup*/
+            .popup {
+              position: relative;
+              display:flex;
+              cursor: pointer;
+              user-select:none;
+              align-items: center;
+            }
+            /*popup content*/
+            .popuptext {
+              visibility:hidden;
+              width:auto;
+              background-color:burlywood;
+              color:grey;
+              text-align:center;
+              border-radius:6px;
+              padding:5pt;
+              position:absolute;
+              z-index:1;
+              right:120%;
+            }
+            /*popup arror*/
+            .popuptext::after {
+              content:"";
+              position:absolute;
+              top: 50%;
+              left: 100%;
+              border-width: 5px;
+              border-style: solid;
+              border-color: transparent transparent transparent burlywood;
+            }
+            /*popup show*/
+            .popup .show {
+              visibility: visible;
+              animation: fadeIn 1s;
+            }
+
+            @keyframes fadeIn {
+              from {opacity: 0;}
+              to {opacity:1 ;}
+            }
     
     /***BOTTOM ROW*****************************/
     #mainBottom{
@@ -139,9 +180,15 @@
         </div>
       </div>
       <div class="middleRight middle">
-        <div class="actionBtn actionElectricity"></div>
-        <div class="actionBtn actionWater"></div>
-        <div class="actionBtn actionBiodiversity"></div>
+        <div class="actionBtn actionElectricity popup" onclick="popup1()">
+          <span class="popuptext" id="myPopup1">something</span>
+        </div>
+        <div class="actionBtn actionWater popup" onclick="popup2()">
+            <span class="popuptext" id="myPopup2">something</span>
+        </div>
+        <div class="actionBtn actionBiodiversity popup" onclick="popup3()">
+            <span class="popuptext" id="myPopup3">something</span>
+        </div>
       </div>
     </div>
     <div id="mainBottom">
@@ -153,4 +200,30 @@
   </div>  
 </body>
 <script src="./JS/update_lifespan.js"></script>
+<script>
+  function popup1() {
+    var popup1 = document.getElementById("myPopup1");
+   popup1.classList.toggle("show");
+   var popup2 = document.getElementById("myPopup2");
+   popup2.classList.remove("show");
+   var popup3 = document.getElementById("myPopup3");
+   popup3.classList.remove("show");
+  }
+  function popup2() {
+    var popup2 = document.getElementById("myPopup2");
+   popup2.classList.toggle("show");
+   var popup1 = document.getElementById("myPopup1");
+   popup1.classList.remove("show");
+   var popup3 = document.getElementById("myPopup3");
+   popup3.classList.remove("show");
+  }
+  function popup3() {
+    var popup3 = document.getElementById("myPopup3");
+   popup3.classList.toggle("show");
+   var popup2 = document.getElementById("myPopup2");
+   popup2.classList.remove("show");
+   var popup1 = document.getElementById("myPopup1");
+   popup1.classList.remove("show");
+  }
+</script>
 </html>
