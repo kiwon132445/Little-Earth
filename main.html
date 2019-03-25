@@ -20,6 +20,16 @@
       height: 25vh;
     }
     
+    #userName{
+      color: white;
+      font-size: 14pt;
+      margin-left: 1em;
+    }
+    
+    #signOutBtn{
+      margin-left: 1em;
+    }
+    
     /***MIDDLE ROW*****************************/
     #mainMiddle{
       height: 50vh;
@@ -173,7 +183,10 @@
 </head>
 <body>
   <div id="container">
-    <div id="mainTop"></div>
+    <div id="mainTop">
+      <p id="userName">Hi, </p>
+      <button id="signOutBtn">Sign Out</button>
+    </div>
     <div id="mainMiddle">
       <div class="middleLeft middle"></div>
       <div class="middleCentre middle">
@@ -228,4 +241,5 @@
    popup1.classList.remove("show");
   }
 </script>
+<script src="./JS/sign_out.js"></script>  
 </html>

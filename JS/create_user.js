@@ -7,5 +7,7 @@
         "lifespan" : 50
       }
     );
+    document.getElementById("userName").append(user.displayName + "!");
   });
+  
 })();
