@@ -3,6 +3,14 @@
   const lifespan = document.getElementById("lifespan");
   var lifespanDecreaseId;
   
+  function startLifespanDecrease(){
+    lifespanDecreaseId = setInterval(decreaseLifespanBar, 10000); //1% in 10sec;
+  }
+  
+  function stopLifespanDecrease(){
+    clearInterval(lifespanDecreaseId);
+  }
+  
   function displayLifespan(width) {
 
     if (width > 97) {
@@ -14,19 +22,8 @@
     lifespanText.innerHTML = width + ',000 years';
   }
   
-  function startLifespanDecrease(){
-    lifespanDecreaseId = setInterval(decreaseLifespanBar, 1000); //1% in 1sec;
-    console.log("lifespanDecreaseId: " + lifespanDecreaseId);
-  }
-  
-  function stopLifespanDecrease(){
-    clearInterval(lifespanDecreaseId);
-  }
-  
   function decreaseLifespanBar(){
     let currentWidth = lifespan.style.width.split("%")[0];
-    console.log("currentWidth: " + currentWidth);
-//    displayLifespan(currentWidth - 1);
     writeLifespanToDB(currentWidth - 1); //should it be written every second or in the very end of the user session?
   }
   
@@ -42,14 +39,13 @@
       if(user){
         firebase.database().ref("users/" + user.uid).update(updatesForCurrentUser);
       }
-  });
+    });
   }
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user){
         var currentUid = user.uid;
-        console.log("currentUid: " + currentUid);
-
+      
         var dbRef = firebase.database().ref().child("users/" + currentUid + "/lifespan"); 
         dbRef.on(
           'value',
@@ -59,6 +55,5 @@
       startLifespanDecrease();
     }
   });
-  
 
 })();
