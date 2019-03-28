@@ -112,7 +112,7 @@
                 <button type="button" onclick="closeTap()">Close the Tap!</button>
             </div>
             <div class="valveLevelBar">
-                <div id="valveLevel" style="width:100%">
+                <div id="valveLevel" style="width:100%;">
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 
                     let valve = document.getElementById("valveLevel");
                     let valveWidth = valve.style.width.split("%")[0];
-                        function openTap() {
+                    function openTap() {
                         if (valveWidth < 100) {
                             valveWidth += 5;
                             valve.style.width = valveWidth + "%";
@@ -132,12 +132,16 @@
                         if (valveWidth > 0) {
                             valveWidth -= 5;
                             valve.style.width = valveWidth + "%";
+                            cancelInterval();
                         }
                     }
-                    var intervalId = setInterval(openTap, 1000);
-                    if (valveWidth <= 0) {
-                        clearInterval(intervalId);
+                    let intervalId = setInterval(openTap, 1000);
+                    function cancelInterval() {
+                        if (valveWidth <= 0) {
+                            clearInterval(intervalId);
+                        }
                     }
+                    
         </script>
     </body>
 </html>
