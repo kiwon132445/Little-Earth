@@ -50,20 +50,20 @@
             .remainingWater {
                 width:100%;
                 height:0%;
-                background-color: grey;
+                background-color: black;
             }
             /*Valve bar*/
             .valveLevelBar {
                 height:50pt;
                 width:500pt;
                 border:3px solid green;
-                background-color:black;
+                background-color:grey;
                 margin-left: 20pt;
             }
             #valveLevel {
                 height:100%;
-                
-                background-color: grey;
+                background-color: black;
+                z-index: 1;
             }
             @media screen and (max-width:950px) {
                 #tap {
@@ -112,7 +112,7 @@
                 <button type="button" onclick="closeTap()">Close the Tap!</button>
             </div>
             <div class="valveLevelBar">
-                <div id="valveLevel" style="width:20%;">
+                <div id="valveLevel" style="width:100%">
                 </div>
             </div>
         </div>
@@ -122,14 +122,21 @@
                 
                     let valve = document.getElementById("valveLevel");
                     let valveWidth = valve.style.width.split("%")[0];
-                    
-                    function openTap() {
-                        valveWidth++;
-                        valve.style.width = valveWidth + "%";
+                        function openTap() {
+                        if (valveWidth < 100) {
+                            valveWidth += 5;
+                            valve.style.width = valveWidth + "%";
+                        }
                     }
                     function closeTap() {
-                        valveWidth--;
-                        valve.style.width = valveWidth + "%";
+                        if (valveWidth > 0) {
+                            valveWidth -= 5;
+                            valve.style.width = valveWidth + "%";
+                        }
+                    }
+                    var intervalId = setInterval(openTap, 1000);
+                    if (valveWidth <= 0) {
+                        clearInterval(intervalId);
                     }
         </script>
     </body>
