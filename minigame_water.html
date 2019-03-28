@@ -2,11 +2,135 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Stop the water!</title>
+        <style>
+            body {
+                margin:0;
+                background-image: url("./CSS/images/i98vXju.jpg")
+            }
+            /*Design*/
+            .horizontal {
+                display:flex;
+                height:400pt
+            }
+            #tap {
+                width:768px;
+                margin-top:-170px;
+                z-index: 0;
+            }
+            .water {
+                position:absolute;
+                background-color:aqua;
+                width:60pt;
+                height:91pt;
+                top:58pt;
+                left:309pt;
+            }
+            /*Buttons*/
+            .buttons {
+                position:absolute;
+                top:200pt;
+                left:100pt;
+            }
+            .buttons button {
+                width:100pt;
+                height:100pt;
+                background-color:antiquewhite;
+            }
+            /*Remaining water bar*/
+            .remainingWaterBar {
+                margin-top:50pt;
+                width:50pt;
+                height:300pt;
+                border:3px solid yellow;
+                margin-left:10pt;
+                background-color:aqua;
+            }
+            .remainingWater {
+                width:100%;
+                height:0%;
+                background-color: grey;
+            }
+            /*Valve bar*/
+            .valveLevelBar {
+                height:50pt;
+                width:500pt;
+                border:3px solid green;
+                background-color:black;
+                margin-left: 20pt;
+            }
+            #valveLevel {
+                height:100%;
+                
+                background-color: grey;
+            }
+            @media screen and (max-width:950px) {
+                #tap {
+                    width:400pt;
+                    margin-top:-130px;
+                    height:400pt;
+                }
+                .water {
+                    width:40pt;
+                    top:44pt;
+                    left:215pt;
+                    height:68pt;
+                }
+                .buttons {
+                    top:150pt;
+                    left:70pt;
+                }
+                .buttons button {
+                    width:70pt;
+                    height:70pt;
+                }
+                .remainingWaterBar {
+                    margin-top:30pt;
+                    width:40pt;
+                    height:200pt;
+                    margin-left:10pt;
+                }
+                .valveLevelBar {
+                    height:40pt;
+                    width:350pt;
+                    margin-left:10pt;
+                    margin-top:-100pt;
+                }
+            }
+        </style>
     </head>
     <body>
-        <div>
-            <img src="./CSS/images/watertap.png" alt="game">
+        <div class="main">
+            <div class="horizontal">
+                <img id="tap" src="./CSS/images/watertap.png" alt="game">
+                <div class="water"></div>
+                <div class="remainingWaterBar"><div class="remainingWater"></div></div>
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="openTap()">Open the Tap!</button>
+                <button type="button" onclick="closeTap()">Close the Tap!</button>
+            </div>
+            <div class="valveLevelBar">
+                <div id="valveLevel" style="width:20%;">
+                </div>
+            </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <script>
+                //alert("Are you ready?");
+                
+                    let valve = document.getElementById("valveLevel");
+                    let valveWidth = valve.style.width.split("%")[0];
+                    
+                    function openTap() {
+                        valveWidth++;
+                        valve.style.width = valveWidth + "%";
+                    }
+                    function closeTap() {
+                        valveWidth--;
+                        valve.style.width = valveWidth + "%";
+                    }
+        </script>
     </body>
 </html>
