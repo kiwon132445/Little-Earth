@@ -139,6 +139,8 @@
                     function cancelInterval() {
                         if (valveWidth <= 0) {
                             clearInterval(intervalId);
+                            document.getElementsByTagName("button")[0].setAttribute("disabled", "disabled");
+                            document.getElementsByTagName("button")[1].setAttribute("disabled", "disabled");
                         }
                     }
                     
