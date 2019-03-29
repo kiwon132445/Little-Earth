@@ -65,6 +65,16 @@
                 background-color: black;
                 z-index: 1;
             }
+            /*close button*/
+            .exit {
+                position:absolute;
+                top:5pt;
+                right:5pt;
+                width:30pt;
+                height:30pt;
+                font-size: 20pt;
+                border:2px solid black;
+            }
             @media screen and (max-width:950px) {
                 #tap {
                     width:400pt;
@@ -106,10 +116,11 @@
                 <img id="tap" src="./CSS/images/watertap.png" alt="game">
                 <div class="water"></div>
                 <div class="remainingWaterBar"><div class="remainingWater"></div></div>
+                <button type="button" class="exit">X</button>
             </div>
             <div class="buttons">
-                <button type="button" onclick="openTap()">Open the Tap!</button>
-                <button type="button" onclick="closeTap()">Close the Tap!</button>
+                <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
+                <button type="button" onclick="closeTap()" class="gameB">Close the Tap!</button>
             </div>
             <div class="valveLevelBar">
                 <div id="valveLevel" style="width:100%;">
@@ -135,12 +146,12 @@
                             cancelInterval();
                         }
                     }
-                    let intervalId = setInterval(openTap, 1000);
+                    let intervalId = setInterval(openTap, 500);
                     function cancelInterval() {
                         if (valveWidth <= 0) {
                             clearInterval(intervalId);
-                            document.getElementsByTagName("button")[0].setAttribute("disabled", "disabled");
-                            document.getElementsByTagName("button")[1].setAttribute("disabled", "disabled");
+                            document.getElementsByClassName("gameB")[0].setAttribute("disabled", "disabled");
+                            document.getElementsByClassName("gameB")[1].setAttribute("disabled", "disabled");
                         }
                     }
                     
