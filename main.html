@@ -1,186 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Little Earth</title>
-    <link rel="stylesheet" href="./CSS/mainstyle.css">
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />  
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-    <script src="./JS/setup_firebase.js"></script>
-    <script src="./JS/create_user.js"></script>
-  <style>
-    
-    #container{
 
-    }
-    
+<head>
+  <meta charset="UTF-8">
+  <title>Little Earth</title>
+  <link rel="stylesheet" href="./CSS/mainstyle.css">
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="./JS/setup_firebase.js"></script>
+  <script src="./JS/create_user.js"></script>
+  <style>
+    #container {}
+
     /***TOP ROW********************************/
-    #mainTop{
+    #mainTop {
       height: 25vh;
     }
-    
-    #userName{
+
+    #userName {
       color: white;
       font-size: 14pt;
       margin-left: 1em;
     }
-    
-    #signOutBtn{
+
+    #signOutBtn {
       margin-left: 1em;
     }
-    
+
     /***MIDDLE ROW*****************************/
-    #mainMiddle{
+    #mainMiddle {
       height: 50vh;
       display: flex;
       justify-content: space-around;
     }
-    
-        /*For debug only*/
-        .middle{
-/*          border: 1px solid red;*/
-        }
 
-        /*---LEFT COLUMN-------------------------*/
-        .middleLeft {
-          width:50px; /*to center the earth and the meter*/
-        }
+    /*For debug only*/
+    .middle {
+      /*          border: 1px solid red;*/
+    }
 
-        /*---CENTRE COLUMN-------------------------*/
-        .middleCentre{
+    /*---LEFT COLUMN-------------------------*/
+    .middleLeft {
+      width: 50px;
+      /*to center the earth and the meter*/
+    }
 
-        }
-    
-            .earthImgContainer{
+    /*---CENTRE COLUMN-------------------------*/
+    .middleCentre {}
 
-            }
+    .earthImgContainer {}
 
-            #earthImg{
-              width: auto;
-              height: 50vh;
-              clip-path: circle(50%);
-            }
+    #earthImg {
+      width: auto;
+      height: 50vh;
+      clip-path: circle(50%);
+    }
 
-        /*---RIGHT COLUMN-------------------------*/
-        .middleRight{
-          display: flex;
-          justify-content: space-evenly;
-          flex-direction: column;
-        }
+    /*---RIGHT COLUMN-------------------------*/
+    .middleRight {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+    }
 
-            .actionBtn{
-              border: 1px solid silver;
-              height: 50px;
-              width: 50px;
-              background-size: cover;
-              border-radius: 20px;
-              box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
-              cursor: pointer;
-              transition: all 0.2s ease 0s;
-            }
+    .actionBtn {
+      border: 1px solid silver;
+      height: 50px;
+      width: 50px;
+      background-size: cover;
+      border-radius: 20px;
+      box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      transition: all 0.2s ease 0s;
+    }
 
-            .actionBtn:hover{
-              transform: translateY(-2px);
-              box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
-            }
+    .actionBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
+    }
 
-            .actionBtn:active{
-              box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
-            }
+    .actionBtn:active {
+      box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+    }
 
-            .actionElectricity{
-              background-image: url("CSS/images/electricity-icon.png");
-            }
+    .actionElectricity {
+      background-image: url("CSS/images/electricity-icon.png");
+    }
 
-            .actionWater{
-              background-image: url("CSS/images/water-icon.png");
-            }
+    .actionWater {
+      background-image: url("CSS/images/water-icon.png");
+    }
 
-            .actionBiodiversity{
-              background-image: url("CSS/images/ladybug-icon.png");
-            }
-            /*popup*/
-            .popup {
-              position: relative;
-              display:flex;
-              cursor: pointer;
-              user-select:none;
-              align-items: center;
-              line-height: 15pt; 
-            }
-            /*popup content*/
-            .popuptext {
-              visibility:hidden;
-              width: 300px;
-              background-color:burlywood;
-              color:black;
-              text-align:center;
-              border-radius:6px;
-              padding:5pt;
-              position:absolute;
-              z-index:1;
-              right:120%;
-              border:1px solid black;
-            }
-            /*popup arrow*/
-            .popuptext::after {
-              content:"";
-              position:absolute;
-              top: 50%;
-              left: 100%;
-              border-width: 5px;
-              border-style: solid;
-              border-color: transparent transparent transparent burlywood;
-            }
-            /*popup show*/
-            .popup .show {
-              visibility: visible;
-              animation: fadeIn 0.5s;
-            }
+    .actionBiodiversity {
+      background-image: url("CSS/images/ladybug-icon.png");
+    }
 
-            @keyframes fadeIn {
-              from {opacity: 0;}
-              to {opacity:1 ;}
-            }
-    
+    /*popup*/
+    .popup {
+      position: relative;
+      display: flex;
+      cursor: pointer;
+      user-select: none;
+      align-items: center;
+      line-height: 15pt;
+    }
+
+    /*popup content*/
+    .popuptext {
+      visibility: hidden;
+      width: 300px;
+      background-color: burlywood;
+      color: black;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5pt;
+      position: absolute;
+      z-index: 1;
+      right: 120%;
+      border: 1px solid black;
+    }
+
+    /*popup arrow*/
+    .popuptext::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent transparent burlywood;
+    }
+
+    /*popup show*/
+    .popup .show {
+      visibility: visible;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
     /***BOTTOM ROW*****************************/
-    #mainBottom{
+    #mainBottom {
       height: 25vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    
-        .meter{
-          width: 50vw;
-          height: 40px;
-          padding: 7px;
-          border-radius: 25px;
-          box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-          background-color: grey;
-        }
 
-        #lifespan{
-          width: 25%;
-          display: block;
-          height: 100%;     
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          background-color: limegreen;
-          background-image: linear-gradient(lime 30%, limegreen 70%);
-        }
-    
-        .whiteText {
-          color: white;
-          font-size: 18pt;
-          padding-left: 1vw;
-        }
-   
+    .meter {
+      width: 50vw;
+      height: 40px;
+      padding: 7px;
+      border-radius: 25px;
+      box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+      background-color: grey;
+    }
+
+    #lifespan {
+      width: 25%;
+      display: block;
+      height: 100%;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .green {
+      background-color: limegreen;
+      background-image: linear-gradient(lime 30%, limegreen 70%);
+    }
+
+    .yellow {
+      background-color: yellow;
+      background-image: linear-gradient(rgb(255, 238, 0) 30%, yellow 70%);
+    }
+
+    .orange {
+      background-color: coral;
+      background-image: linear-gradient(orangeRed 30%, coral 70%);
+    }
+
+    .red {
+      background-color: tomato;
+      background-image: linear-gradient(red 30%, tomato 70%);
+    }
+
+    .whiteText {
+      color: white;
+      font-size: 18pt;
+      padding-left: 1vw;
+    }
   </style>
 </head>
+
 <body>
   <div id="container">
     <div id="mainTop">
@@ -199,22 +223,25 @@
           <span class="popuptext" id="myPopup1">something</span>
         </div>
         <div class="actionBtn actionWater popup" onmouseover="popup2()" onmouseout="popup2()">
-            <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water for the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
+          <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a
+            freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water for
+            the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
         </div>
         <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
-            <span class="popuptext" id="myPopup3">something</span>
+          <span class="popuptext" id="myPopup3">something</span>
         </div>
       </div>
     </div>
     <div id="mainBottom">
       <div>
-        <div class="meter whiteCenteredText"><span id="lifespan"></span></div>
+        <div class="meter whiteCenteredText"><span id="lifespan" class="yellow"></span></div>
         <div id="lifespanText" class="whiteText">25,000 years</div>
       </div>
     </div>
   </div>
   <script src="./JS/update_lifespan.js"></script>
   <script src="./JS/popup.js"></script>
-  <script src="./JS/sign_out.js"></script>  
+  <script src="./JS/sign_out.js"></script>
 </body>
+
 </html>

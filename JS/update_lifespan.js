@@ -32,6 +32,18 @@ function displayLifespan(width) {
   }
   lifespan.style.width = width + '%';
 
+  var lifespanJQ = $("#lifespan");
+  if(width < 15){
+    lifespanJQ.removeClass().addClass("red");
+  } else if (width < 30) {
+    lifespanJQ.removeClass().addClass("orange");
+  } else if (width < 60) {
+    lifespanJQ.removeClass().addClass("yellow");
+  } else {
+    lifespanJQ.removeClass().addClass("green");
+  }
+  
+
   var lifespanText = document.getElementById("lifespanText");
   lifespanText.innerHTML = width + ',000 years';
 }
