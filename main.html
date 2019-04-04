@@ -63,13 +63,14 @@
     .middleRight {
       display: flex;
       justify-content: space-evenly;
+      align-items: center;
       flex-direction: column;
     }
 
     .actionBtn {
       border: 1px solid silver;
-      height: 50px;
-      width: 50px;
+      height: 70px;
+      width: 70px;
       background-size: cover;
       border-radius: 20px;
       box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
@@ -201,6 +202,16 @@
       color: white;
       font-size: 18pt;
       padding-left: 1vw;
+      padding-right: 1vw;
+    }
+
+    .largeText {
+      font-size: 24pt;
+    }
+
+    .backgroundBox {
+      background-color: black;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -219,6 +230,7 @@
         </div>
       </div>
       <div class="middleRight middle">
+        <div class="whiteText largeText backgroundBox">Mini games </div>
         <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
           <span class="popuptext" id="myPopup1">something</span>
         </div>
@@ -234,7 +246,7 @@
     </div>
     <div id="mainBottom">
       <div>
-        <div class="meter whiteCenteredText"><span id="lifespan" class="yellow"></span></div>
+        <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
         <div id="lifespanText" class="whiteText">25,000 years</div>
       </div>
     </div>
