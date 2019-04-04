@@ -21,11 +21,14 @@
             }
             .water {
                 position:absolute;
-                background-color:aqua;
                 width:60pt;
                 height:91pt;
                 top:58pt;
                 left:309pt;
+            }
+            #waterFlow {
+                background-color:aqua;
+                height:100%;
             }
             /*Buttons*/
             .buttons {
@@ -48,9 +51,8 @@
                 background-color:aqua;
             }
             .remainingWater {
-                width:100%;
-                height:0%;
                 background-color: black;
+                
             }
             /*Valve bar*/
             .valveLevelBar {
@@ -114,8 +116,8 @@
         <div class="main">
             <div class="horizontal">
                 <img id="tap" src="./CSS/images/watertap.png" alt="game">
-                <div class="water"></div>
-                <div class="remainingWaterBar"><div class="remainingWater"></div></div>
+                <div class="water"><div id="waterFlow" style="width:100%;"></div></div>
+                <div class="remainingWaterBar"><div class="remainingWater" style="height:0%;"></div></div>
                 <button type="button" class="exit">X</button>
             </div>
             <div class="buttons">
@@ -129,14 +131,33 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
         <script>
-                //alert("Are you ready?");
-                
+                    let interval10;
+                    let interval8;
+                    let interval6;
+                    let interval4;
+                    let interval2;
+                    let intervalCount = 0;
+                    
                     let valve = document.getElementById("valveLevel");
-                    let valveWidth = valve.style.width.split("%")[0];
+                    let valveWidth = parseInt(valve.style.width.split("%")[0]);
+
+                    let waterFlow = document.getElementById("waterFlow");
+
+                    let waterLevel = document.getElementsByClassName("remainingWater")
+                    let waterLevelContainer = document.getElementsByClassName("remainingWaterBar");
+                    let waterLevelHeight = parseInt($(waterLevel).height()/$(waterLevelContainer).height() * 100);
+
+                    //alert("Are you ready?");
+                    let intervalId = setInterval(openTap, 500);
+                    let decreaseInterval = setInterval(waterDecrease, 200);
+                    /*let setWInterval = setInterval(setWaterInterval, 100);
+                    let clearWInterval = setInterval(clearWaterInterval, 100);*/
+                    
                     function openTap() {
                         if (valveWidth < 100) {
                             valveWidth += 5;
                             valve.style.width = valveWidth + "%";
+                            waterFlowLevel();
                         }
                     }
                     function closeTap() {
@@ -144,17 +165,71 @@
                             valveWidth -= 5;
                             valve.style.width = valveWidth + "%";
                             cancelInterval();
+                            waterFlowLevel();
                         }
                     }
-                    let intervalId = setInterval(openTap, 500);
+                    
+                    //close game
                     function cancelInterval() {
                         if (valveWidth <= 0) {
                             clearInterval(intervalId);
+                            clearInterval(decreaseInterval);
                             document.getElementsByClassName("gameB")[0].setAttribute("disabled", "disabled");
                             document.getElementsByClassName("gameB")[1].setAttribute("disabled", "disabled");
                         }
                     }
-                    
+                    //water width
+                    function waterFlowLevel() {
+                        waterFlow.style.width = valveWidth + "%";
+                    }
+
+
+                    //remaining water bar
+                    /*function setWaterInterval() {
+                            if (valveWidth <= 100 && valveWidth > 80 && intervalCount == 0) {
+                                let interval10 = setInterval(waterDecrease, 100);
+                                 intervalCount++;
+                            } else if (valveWidth <= 80 && valveWidth > 60 && intervalCount == 0) {
+                                let interval8 = setInterval(waterDecrease, 200);
+                                intervalCount++;
+                            } else if (valveWidth <= 60 && valveWidth > 40 && intervalCount == 0) {
+                                let interval6 = setInterval(waterDecrease, 600);
+                                intervalCount++;
+                            } else if (valveWidth <= 40 && valveWidth > 20 && intervalCount == 0) {
+                                let interval4 = setInterval(waterDecrease, 800);
+                                intervalCount++;
+                            } else if (valveWidth <= 20 && valveWidth > 0 && intervalCount == 0) {
+                                let interval2 = setInterval(waterDecrease, 1000);
+                                intervalCount++;
+
+                            }
+                    }
+                    function clearWaterInterval() {
+                        if (valveWidth <= 80 && valveWidth > 60 && intervalCount > 0) {
+                            clearInterval(interval10);
+                            intervalCount--;
+                        } else if (valveWidth <= 60 && valveWidth > 40 && intervalCount > 0) {
+                            clearInterval(interval8);
+                            intervalCount--;
+                        } else if (valveWidth <= 40 && valveWidth > 20 && intervalCount > 0) {
+                            clearInterval(interval6);
+                            intervalCount--;
+                        } else if (valveWidth <= 20 && valveWidth > 0 && intervalCount > 0) {
+                            clearInterval(interval4);
+                            intervalCount--;
+                        } else if (valveWidth <= 0) {
+                            clearInterval(interval2);
+                            intervalCount--;
+                        }
+                    }*/
+
+                
+                    function waterDecrease() {
+                        if (waterLevelHeight < 100) {
+                            waterLevelHeight++;
+                            $(waterLevel).height(waterLevelHeight + "%");
+                        }
+                    }
         </script>
     </body>
 </html>
