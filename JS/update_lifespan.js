@@ -1,22 +1,6 @@
 const lifespan = document.getElementById("lifespan");
 var lifespanDecreaseId;
 
-(function () {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      var currentUid = user.uid;
-
-      var dbRef = firebase.database().ref().child("users/" + currentUid + "/lifespan");
-      dbRef.on(
-        'value',
-        function (snapshot) {
-          displayLifespan(snapshot.val());
-        });
-      startLifespanDecrease();
-    }
-  });
-})();
-
 function startLifespanDecrease() {
   lifespanDecreaseId = setInterval(decreaseLifespanBar, 1000); //1% in 1sec;
 }
@@ -33,7 +17,7 @@ function displayLifespan(width) {
   lifespan.style.width = width + '%';
 
   var lifespanJQ = $("#lifespan");
-  if(width < 15){
+  if (width < 15) {
     lifespanJQ.removeClass().addClass("red");
   } else if (width < 30) {
     lifespanJQ.removeClass().addClass("orange");
@@ -42,13 +26,13 @@ function displayLifespan(width) {
   } else {
     lifespanJQ.removeClass().addClass("green");
   }
-  
+
 
   var lifespanText = document.getElementById("lifespanText");
   lifespanText.innerHTML = width + ',000 years';
 }
 
-function getCurrentLifespanWidth(){
+function getCurrentLifespanWidth() {
   return parseInt(lifespan.style.width.split("%")[0]);
 }
 
@@ -72,6 +56,15 @@ function increaseLifespanBar(amount = 25) {
   }
 }
 
+// function increaseExperienceBar(amount = 25) {
+//   let currentWidth = getCurrentLifespanWidth();
+//   if ((currentWidth + amount) > 100) {
+//     writeLifespanToDB(100);
+//   } else {
+//     writeLifespanToDB(currentWidth + amount);
+//   }
+// }
+
 function endGame(didWin) {
   stopLifespanDecrease();
   if (didWin) {
@@ -93,6 +86,10 @@ function writeLifespanToDB(width) {
   writeToDB({ "lifespan": width });
 }
 
+function writeExperienceToDB(width) {
+  writeToDB({ "experience": width });
+}
+
 // Parameter updatesForCurrentUser accepts an object, with key-value pairs,
 // where key is a key in DB under "users/userUID" node, 
 // and value - the new value to write.
@@ -102,4 +99,24 @@ function writeToDB(updatesForCurrentUser) {
       firebase.database().ref("users/" + user.uid).update(updatesForCurrentUser);
     }
   });
+}
+
+function increaseLifespan(percents) {
+  // console.log(readLifespanFromDB());
+}
+
+function readLifespanFromDB() {
+  // var currentLifespan;
+  // var userId = firebase.auth().currentUser.uid;
+  // var currentUid = user.uid;
+
+  // firebase.auth().onAuthStateChanged(function (user) {
+  //   if (user) {
+  //     var currentUid = user.uid;
+
+  //     var dbRef = firebase.database().ref().child("users/" + currentUid + "/lifespan");
+  //     currentLifespan = dbRef.once('value').then(function (snapshot) {return snapshot.val()});
+  //   }
+  // });
+  // return currentLifespan;
 }

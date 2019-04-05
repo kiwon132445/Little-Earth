@@ -111,6 +111,9 @@
                 }
             }
         </style>
+        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+        <script src="./JS/setup_firebase.js"></script>
+        <script src="./JS/update_lifespan.js"></script>
     </head>
     <body>
         <div class="main">
@@ -118,7 +121,7 @@
                 <img id="tap" src="./CSS/images/watertap.png" alt="game">
                 <div class="water"><div id="waterFlow" style="width:100%;"></div></div>
                 <div class="remainingWaterBar"><div class="remainingWater" style="height:0%;"></div></div>
-                <button type="button" class="exit">X</button>
+                <button type="button" class="exit" onclick="lose()">X</button>
             </div>
             <div class="buttons">
                 <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
@@ -148,7 +151,7 @@
                     let waterLevelHeight = parseInt($(waterLevel).height()/$(waterLevelContainer).height() * 100);
 
                     alert("Are you ready?");
-                    let intervalId = setInterval(openTap, 500);
+                    let intervalId = setInterval(openTap, 400);
                     let decreaseInterval = setInterval(waterDecrease, 200);
                     
                     function openTap() {
@@ -157,12 +160,12 @@
                             valve.style.width = valveWidth + "%";
                             waterFlowLevel();
                         }
+                        
                     }
                     function closeTap() {
                         if (valveWidth > 0) {
                             valveWidth -= 5;
                             valve.style.width = valveWidth + "%";
-                            cancelInterval();
                             waterFlowLevel();
                         }
                     }
@@ -170,6 +173,7 @@
                     //close game
                     function cancelInterval() {
                         if (valveWidth <= 0) {
+                            win();
                             clearInterval(intervalId);
                             clearInterval(decreaseInterval);
                             document.getElementsByClassName("gameB")[0].setAttribute("disabled", "disabled");
@@ -181,10 +185,28 @@
                         waterFlow.style.width = valveWidth + "%";
                     }
 
+                    //decrease remaining water
                     function waterDecrease() {
                         if (waterLevelHeight < 100) {
                             waterLevelHeight++;
                             $(waterLevel).height(waterLevelHeight + "%");
+                        }
+                        if (valveWidth > 0 && waterLevelHeight >= 100) {
+                            lose();
+                        }
+                        cancelInterval()
+                    }
+
+                    function lose() {
+                        setTimeout(window.location.href = "main.html", 500);
+                        // decreaseLifespanBar(15);
+                    }
+
+                    function win() {
+                        if (valveWidth <= 0 && waterLevelHeight < 100) {
+                            increaseLifespan(25);
+                            //Experience increase
+                            setTimeout(window.location.href = "main.html", 500);
                         }
                     }
         </script>
