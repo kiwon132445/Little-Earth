@@ -121,7 +121,7 @@
                 <img id="tap" src="./CSS/images/watertap.png" alt="game">
                 <div class="water"><div id="waterFlow" style="width:100%;"></div></div>
                 <div class="remainingWaterBar"><div class="remainingWater" style="height:0%;"></div></div>
-                <button type="button" class="exit" onclick="lose()">X</button>
+                <button type="button" class="exit" onclick="exitButton()">X</button>
             </div>
             <div class="buttons">
                 <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
@@ -167,15 +167,16 @@
                             valveWidth -= 5;
                             valve.style.width = valveWidth + "%";
                             waterFlowLevel();
+                            cancelInterval();
                         }
                     }
                     
                     //close game
                     function cancelInterval() {
-                        if (valveWidth <= 0) {
-                            win();
+                        if (valveWidth <= 0 || waterLevelHeight >= 100) {
                             clearInterval(intervalId);
                             clearInterval(decreaseInterval);
+                            win();
                             document.getElementsByClassName("gameB")[0].setAttribute("disabled", "disabled");
                             document.getElementsByClassName("gameB")[1].setAttribute("disabled", "disabled");
                         }
@@ -191,22 +192,41 @@
                             waterLevelHeight++;
                             $(waterLevel).height(waterLevelHeight + "%");
                         }
-                        if (valveWidth > 0 && waterLevelHeight >= 100) {
-                            lose();
-                        }
                         cancelInterval()
+                        lose();
                     }
-
-                    function lose() {
-                        setTimeout(window.location.href = "main.html", 500);
-                        // decreaseLifespanBar(15);
-                    }
-
+                    //win
                     function win() {
                         if (valveWidth <= 0 && waterLevelHeight < 100) {
                             increaseLifespan(25);
                             //Experience increase
-                            setTimeout(window.location.href = "main.html", 500);
+
+                            let win = new Promise(function(resolve, reject) {
+                                setTimeout(() => resolve(alert("You won! Earth gains back 25000 points of its lifespan")), 100);
+                                
+                            });
+                            win.then(
+                                result => window.location.href = "main.html"
+                                );
+                        }
+                    }
+                    //lose
+                    function lose() {
+                        if (valveWidth > 0 && waterLevelHeight >= 100) {
+                            // decreaseLifespanBar(15);
+                            let lose = new Promise(function(resolve, reject) {
+                                setTimeout(() => resolve(alert("You Lost! Earth lost 15000 points of its lifespan")), 100);
+                            });
+                            lose.then(
+                                result => window.location.href = "main.html"
+                                );
+                        }
+                    }
+                    function exitButton() {
+                        let exitConfirm = confirm("Earth will lose 15000 points of its lifespan. \nWill you exit game?");
+                        if (exitConfirm == true) {
+                            window.location.href = "main.html";
+                        // decreaseLifespanBar(15);
                         }
                     }
         </script>
