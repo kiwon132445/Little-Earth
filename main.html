@@ -98,6 +98,9 @@
     .actionBiodiversity {
       background-image: url("CSS/images/ladybug-icon.png");
     }
+    .actionSetting {
+      background-image:url("CSS/images/settings-icon.png");
+    }
 
     /*popup*/
     .popup {
@@ -109,7 +112,7 @@
       line-height: 15pt;
     }
 
-    /*popup content*/
+    /*Left popup content*/
     .popuptext {
       visibility: hidden;
       width: 300px;
@@ -124,7 +127,7 @@
       border: 1px solid black;
     }
 
-    /*popup arrow*/
+    /*Left popup arrow*/
     .popuptext::after {
       content: "";
       position: absolute;
@@ -133,6 +136,31 @@
       border-width: 5px;
       border-style: solid;
       border-color: transparent transparent transparent burlywood;
+    }
+
+    .rightpopuptext {
+      visibility: hidden;
+      width: 300px;
+      background-color: grey;
+      color: black;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5pt;
+      position: absolute;
+      z-index: 1;
+      left: 120%;
+      border: 1px solid black;
+    }
+
+    /*Left popup arrow*/
+    .rightpopuptext::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent grey transparent transparent;
     }
 
     /*popup show*/
@@ -220,7 +248,12 @@
   <div id="container">
     <div id="mainTop">
       <p id="userName">Hi, </p>
-      <button id="signOutBtn">Sign Out</button>
+      <div class="popup actionSetting actionBtn" style="margin-left:10pt;" onclick="popupSetting()">
+        <div class="rightpopuptext" id="popupsetting">
+          <button id="signOutBtn">Sign Out</button>
+        </div>
+      </div>
+      
     </div>
     <div id="mainMiddle">
       <div class="middleLeft middle"></div>

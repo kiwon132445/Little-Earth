@@ -22,3 +22,7 @@ function popup1() {
    var popup1 = document.getElementById("myPopup1");
    popup1.classList.remove("show");
   }
+  function popupSetting() {
+    var popupset = document.getElementById("popupsetting");
+    popupset.classList.toggle("show");
+  }
