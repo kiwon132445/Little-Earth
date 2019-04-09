@@ -66,6 +66,13 @@
       flex-direction: column;
     }
 
+    .buttonMargin {
+      margin: 3pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
     .actionBtn {
       border: 1px solid silver;
       height: 70px;
@@ -211,8 +218,8 @@
       align-items: center;
     }
 
-    .barLabel {
-      color: white;
+    .label {
+      color:whitesmoke;
       font-size: 18pt;
       margin-right: 5pt;
     }
@@ -280,30 +287,42 @@
       </div>
       <div class="middleRight middle">
         <div class="whiteText largeText backgroundBox">Mini games </div>
-        <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
-          <span class="popuptext" id="myPopup1">something</span>
+
+        <div class="buttonMargin">
+          <span class="label">Energy</span>
+          <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
+              <span class="popuptext" id="myPopup1">something</span>
+          </div>
         </div>
-        <div id="actionWater" class="actionBtn actionWater popup" onmouseover="popup2()" onmouseout="popup2()">
-          <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a
-            freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water for
-            the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
+
+        <div class="buttonMargin">
+          <span class="label">Water</span>
+          <div id="actionWater" class="actionBtn actionWater popup" onmouseover="popup2()" onmouseout="popup2()">
+            <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a
+              freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water for
+              the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
+          </div>
         </div>
-        <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
-          <span class="popuptext" id="myPopup3">something</span>
+
+        <div class="buttonMargin">
+          <span class="label">Biodiversity</span>
+          <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
+            <span class="popuptext" id="myPopup3">something</span>
+          </div>
         </div>
       </div>
     </div>
     <div id="mainBottom">
       <div>
         <div class="flexbox">
-          <span class="barLabel">Lifespan: </span>
+          <span class="label">Lifespan: </span>
             <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
         </div>
         <div id="lifespanText" class="whiteText">25,000 years</div>
       </div>
       <div>
         <div class="flexbox">
-          <span class="barLabel">Experience: </span>
+          <span class="label">Experience: </span>
           <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
         </div>
         <div id="experienceText" class="whiteText">0 percents</div>
