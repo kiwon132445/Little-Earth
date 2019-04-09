@@ -85,16 +85,17 @@
                     //win
                     function win() {
                         if (valveWidth <= 0 && waterLevelHeight < 100) {
-                            increaseLifespan(25).then(function(){
-                                let win = new Promise(function(resolve, reject) {
-                                    setTimeout(() => resolve(alert("You won! Earth gains back 25000 points of its lifespan")), 100);
-                                    
+                            let experienceUpdated = increaseExperience(10);
+                            experienceUpdated.then(function(){
+                                increaseLifespan(25).then(function(){
+                                    let win = new Promise(function(resolve, reject) {
+                                        setTimeout(() => resolve(alert("You won! Earth gains back 25000 points of its lifespan")), 100);
+                                    });
+                                    win.then(
+                                        result => window.location.href = "main.html"
+                                    );
                                 });
-                                win.then(
-                                    result => window.location.href = "main.html"
-                                );
                             });
-                            //Experience increase
                         }
                     }
                     //lose

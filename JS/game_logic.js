@@ -38,6 +38,19 @@ function increaseLifespan(amount = 25) {
   return promise;
 }
 
+// Returns a promise when updates are complete.
+function increaseExperience(amount = 10) {
+  let promise;
+  let currentPercents = getExperience();
+  if ((currentPercents + amount) > 100) {
+    promise = writeExperienceToDB(100);
+    endGame(true);
+  } else {
+    promise = writeExperienceToDB(currentPercents + amount);
+  }
+  return promise;
+}
+
 function endGame(didWin) {
   stopLifespanDecrease();
   if (didWin) {
