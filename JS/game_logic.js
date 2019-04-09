@@ -42,7 +42,7 @@ function increaseLifespan(amount = 25) {
 function increaseExperience(amount = 10) {
   let promise;
   let currentPercents = getExperience();
-  if ((currentPercents + amount) > 100) {
+  if ((currentPercents + amount) >= 100) {
     promise = writeExperienceToDB(100);
     endGame(true);
   } else {
@@ -51,6 +51,7 @@ function increaseExperience(amount = 10) {
   return promise;
 }
 
+//to change
 function endGame(didWin) {
   stopLifespanDecrease();
   if (didWin) {
@@ -129,10 +130,9 @@ function initializeUser(callback) {
           userRef.update(userData);
         }
         localStorage.setItem("name", user.displayName);
-        return userData;
       });
 
-      onUpdatesComplete.then(function (currentUserData) { callback(currentUserData) });
+      onUpdatesComplete.then(callback);
     }
   });
 }

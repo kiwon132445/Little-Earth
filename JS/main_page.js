@@ -2,9 +2,8 @@
 
     $(document).ready(function () {
 
-        initializeUser(function (userData) {
+        initializeUser(function () {
 
-            // let { name } = userData.val();
             displayUserName(getUserName());
             subscribeForDbLifespanChange(displayLifespan);
             subscribeForDbExperienceChange(displayExperience);
