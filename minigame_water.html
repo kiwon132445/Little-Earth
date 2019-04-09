@@ -113,7 +113,6 @@
         </style>
         <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
         <script src="./JS/setup_firebase.js"></script>
-        <script src="./JS/update_lifespan.js"></script>
     </head>
     <body>
         <div class="main">
@@ -133,6 +132,7 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+        <script src="./JS/game_logic.js"></script>
         <script>
                     let interval10;
                     let interval8;
@@ -198,35 +198,37 @@
                     //win
                     function win() {
                         if (valveWidth <= 0 && waterLevelHeight < 100) {
-                            increaseLifespan(25);
-                            //Experience increase
-
-                            let win = new Promise(function(resolve, reject) {
-                                setTimeout(() => resolve(alert("You won! Earth gains back 25000 points of its lifespan")), 100);
-                                
-                            });
-                            win.then(
-                                result => window.location.href = "main.html"
+                            increaseLifespan(25).then(function(){
+                                let win = new Promise(function(resolve, reject) {
+                                    setTimeout(() => resolve(alert("You won! Earth gains back 25000 points of its lifespan")), 100);
+                                    
+                                });
+                                win.then(
+                                    result => window.location.href = "main.html"
                                 );
+                            });
+                            //Experience increase
                         }
                     }
                     //lose
                     function lose() {
                         if (valveWidth > 0 && waterLevelHeight >= 100) {
-                            // decreaseLifespanBar(15);
-                            let lose = new Promise(function(resolve, reject) {
-                                setTimeout(() => resolve(alert("You Lost! Earth lost 15000 points of its lifespan")), 100);
+                            decreaseLifespan(15).then(function(){
+                                let lose = new Promise(function(resolve, reject) {
+                                    setTimeout(() => resolve(alert("You Lost! Earth lost 15000 points of its lifespan")), 100);
+                                });
+                                lose.then(
+                                    result => window.location.href = "main.html"
+                                ); 
                             });
-                            lose.then(
-                                result => window.location.href = "main.html"
-                                );
                         }
                     }
                     function exitButton() {
                         let exitConfirm = confirm("Earth will lose 15000 points of its lifespan. \nWill you exit game?");
                         if (exitConfirm == true) {
-                            window.location.href = "main.html";
-                        // decreaseLifespanBar(15);
+                            decreaseLifespan(15).then(function(){
+                                window.location.href = "main.html";
+                            });
                         }
                     }
         </script>
