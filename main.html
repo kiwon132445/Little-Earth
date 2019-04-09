@@ -206,6 +206,16 @@
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
     }
+    .flexbox {
+      display:flex;
+      align-items: center;
+    }
+
+    .barLabel {
+      color: white;
+      font-size: 18pt;
+      margin-right: 5pt;
+    }
 
     .blue {
       background-color: skyblue;
@@ -235,7 +245,7 @@
     .whiteText {
       color: white;
       font-size: 18pt;
-      padding-left: 1vw;
+      padding-left: 8vw;
       padding-right: 1vw;
     }
 
@@ -259,7 +269,7 @@
           <button id="signOutBtn">Sign Out</button>
         </div>
       </div>
-      <div class="whiteText largeText">Keep me alive! </br> Your Little Earth</div>
+      <div class="whiteText largeText">Keep me alive! <br> Your Little Earth</div>
     </div>
     <div id="mainMiddle">
       <div class="middleLeft middle"></div>
@@ -285,11 +295,17 @@
     </div>
     <div id="mainBottom">
       <div>
-        <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
+        <div class="flexbox">
+          <span class="barLabel">Lifespan: </span>
+            <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
+        </div>
         <div id="lifespanText" class="whiteText">25,000 years</div>
       </div>
       <div>
-        <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
+        <div class="flexbox">
+          <span class="barLabel">Experience: </span>
+          <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
+        </div>
         <div id="experienceText" class="whiteText">0 percents</div>
       </div>
     </div>
