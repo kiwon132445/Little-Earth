@@ -11,7 +11,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="./JS/setup_firebase.js"></script>
-  <script src="./JS/create_user.js"></script>
   <style>
     #container {}
 
@@ -183,6 +182,7 @@
     #mainBottom {
       height: 25vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -196,7 +196,7 @@
       background-color: grey;
     }
 
-    #lifespan {
+    #lifespan, #experience {
       width: 25%;
       display: block;
       height: 100%;
@@ -204,6 +204,11 @@
       border-bottom-right-radius: 8px;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+    }
+
+    .blue {
+      background-color: skyblue;
+      background-image: linear-gradient(blue 30%, skyblue 70%);
     }
 
     .green {
@@ -282,12 +287,15 @@
         <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
         <div id="lifespanText" class="whiteText">25,000 years</div>
       </div>
+      <div>
+        <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
+        <div id="experienceText" class="whiteText">0 percents</div>
+      </div>
     </div>
   </div>
-  <script src="./JS/update_lifespan.js"></script>
-  <script src="./JS/display_lifespan.js"></script>
+  <script src="./JS/game_logic.js"></script>
   <script src="./JS/popup.js"></script>
-  <script src="./JS/water_game.js"></script>
+  <script src="./JS/main_page.js"></script>
   <script src="./JS/sign_out.js"></script>
 </body>
 
