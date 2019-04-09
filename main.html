@@ -148,14 +148,15 @@
       position: absolute;
       z-index: 1;
       left: 120%;
+      top: 20%;
       border: 1px solid black;
     }
 
-    /*Left popup arrow*/
+    /*popup arrow on left of popup*/
     .rightpopuptext::after {
       content: "";
       position: absolute;
-      top: 50%;
+      top: 20%;
       right: 100%;
       border-width: 5px;
       border-style: solid;
@@ -252,9 +253,9 @@
 <body>
   <div id="container">
     <div id="mainTop">
-      <p id="userName">Hi, </p>
-      <div class="popup actionSetting actionBtn" style="margin-left:10pt;" onclick="popupSetting()">
+      <div class="popup actionSetting actionBtn" style="margin-left:10pt; margin-top:10pt;" onclick="popupSetting()">
         <div class="rightpopuptext" id="popupsetting">
+          <p id="userName">Hi, </p>
           <button id="signOutBtn">Sign Out</button>
         </div>
       </div>

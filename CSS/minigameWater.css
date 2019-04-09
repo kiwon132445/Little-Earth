@@ -26,7 +26,7 @@ body {
 /*Buttons*/
 .buttons {
     position:absolute;
-    top:200pt;
+    top:160pt;
     left:100pt;
 }
 .buttons button {
@@ -83,8 +83,11 @@ body {
         height:68pt;
     }
     .buttons {
-        top:150pt;
+        top:120pt;
         left:70pt;
+    }
+    .buttons h1 {
+        font-size: 10pt;
     }
     .buttons button {
         width:70pt;
