@@ -217,6 +217,7 @@
     .flexbox {
       display:flex;
       align-items: center;
+      justify-content: space-between;
     }
 
     .label {
@@ -262,7 +263,7 @@
     }
 
     .backgroundBox {
-      background-color: black;
+      background-color:#75BCF0;
       border-radius: 10px;
     }
   </style>
@@ -272,7 +273,7 @@
   <div id="container">
     <div id="mainTop">
       <div class="popup actionSetting actionBtn" style="margin-left:10pt; margin-top:10pt;" onclick="popupSetting()">
-          <img src="https://img.icons8.com/wired/64/000000/services.png">
+          <img src="https://img.icons8.com/wired/64/000000/services.png" alt="">
         <div class="rightpopuptext" id="popupsetting">
           <p id="userName">Hi, </p>
           <button id="signOutBtn">Sign Out</button>
@@ -287,8 +288,8 @@
           <img id="earthImg" src="CSS/images/earth.jpg" alt="Main character. Little Earth.">
         </div>
       </div>
-      <div class="middleRight middle">
-        <div class="whiteText largeText backgroundBox">Mini games </div>
+      <div class="middleRight middle backgroundBox">
+        <span class="whiteText largeText" style="background-color:black;">Mini games </span>
 
         <div class="buttonMargin">
           <span class="label">Energy</span>
@@ -315,19 +316,21 @@
       </div>
     </div>
     <div id="mainBottom">
-      <div>
-        <div class="flexbox">
-          <span class="label">Lifespan: </span>
-            <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
-        </div>
-        <div id="lifespanText" class="whiteText">25,000 years</div>
-      </div>
-      <div>
-        <div class="flexbox">
-          <span class="label">Experience: </span>
-          <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
-        </div>
-        <div id="experienceText" class="whiteText">0 percents</div>
+      <div class="backgroundBox" style="padding:10pt;">
+        <div>
+            <div class="flexbox">
+              <span class="label">Lifespan: </span>
+                <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
+            </div>
+            <div id="lifespanText" class="whiteText">25,000 years</div>
+          </div>
+            <div>
+              <div class="flexbox">
+                <span class="label">Experience: </span>
+                <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
+              </div>
+              <div id="experienceText" class="whiteText">0 percents</div>
+          </div>
       </div>
     </div>
   </div>
