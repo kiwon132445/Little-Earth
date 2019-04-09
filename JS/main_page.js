@@ -7,17 +7,13 @@
             // let { name } = userData.val();
             displayUserName(getUserName());
             subscribeForDbLifespanChange(displayLifespan);
+            subscribeForDbExperienceChange(displayExperience);
             start();
             handleWaterActionBtnClick();
 
         });
 
     });
-
-    //not used
-    function getCurrentLifespanBarWidth() {
-        return parseInt(lifespan.style.width.split("%")[0]);
-    }
 
     function displayUserName(userName) {
         document.getElementById("userName").append(userName + "!");
@@ -51,6 +47,18 @@
 
         var lifespanText = document.getElementById("lifespanText");
         lifespanText.innerHTML = width + ',000 years';
+    }
+
+    function displayExperience(width) {
+        const experience = document.getElementById("experience");
+
+        if (width > 97) {
+            experience.style.borderRadius = '20px';
+        }
+        experience.style.width = width + '%';
+
+        var experienceText = document.getElementById("experienceText");
+        experienceText.innerHTML = width + (width==1 ? ' percent' : ' percents');
     }
 
 })();
