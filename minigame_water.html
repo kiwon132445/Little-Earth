@@ -17,6 +17,7 @@
                 <button type="button" class="exit" onclick="exitButton()">X</button>
             </div>
             <div class="buttons">
+                <h1>Close the tap! Every drop counts!</h1>
                 <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
                 <button type="button" onclick="closeTap()" class="gameB">Close the Tap!</button>
             </div>
@@ -37,7 +38,10 @@
                     let waterLevelContainer = document.getElementsByClassName("remainingWaterBar");
                     let waterLevelHeight = parseInt($(waterLevel).height()/$(waterLevelContainer).height() * 100);
 
-                    alert("Are you ready?");
+                    alert("An evil steel manufacturing business person is thirsty of securing a " 
+                    + "freshwater source. They are trying to turn on the tap to divert our "
+                    + "valuable source of drinking water for the factory. Hurry! Stop it " 
+                    + "by tapping fast to the water tap faucet. \n\nAre you ready to start?");
                     let intervalId = setInterval(openTap, 400);
                     let decreaseInterval = setInterval(waterDecrease, 200);
                     
