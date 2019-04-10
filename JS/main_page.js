@@ -7,6 +7,8 @@
             displayUserName(getUserName());
             subscribeForDbLifespanChange(displayLifespan);
             subscribeForDbExperienceChange(displayExperience);
+            subscribeForDbLifespanChange(checkIfLose);
+            subscribeForDbExperienceChange(checkIfWin);
             start();
             handleWaterActionBtnClick();
 
@@ -23,6 +25,28 @@
             console.log("Water action clicked");
             window.location.href = "minigame_water.html";
         });
+    }
+
+    function checkIfWin(experience){
+        if (experience >= 100){
+            stopLifespanDecrease();            
+            winTheGame();
+        }
+    }
+
+    function checkIfLose(lifespan){
+        if (lifespan <= 0){
+            stopLifespanDecrease();            
+            loseTheGame();
+        }
+    }
+
+    function winTheGame(){
+        console.log("You won!");
+    }
+
+    function loseTheGame(){
+        console.log("You lost!");
     }
 
     function displayLifespan(width) {

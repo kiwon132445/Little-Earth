@@ -19,7 +19,6 @@ function decreaseLifespan(amount = 1) {
   if ((currentPercents - amount) <= 0) {
     //Game over!
     promise = writeLifespanToDB(0);
-    endGame(false);
   } else {
     promise = writeLifespanToDB(currentPercents - amount);
   }
@@ -44,29 +43,10 @@ function increaseExperience(amount = 10) {
   let currentPercents = getExperience();
   if ((currentPercents + amount) >= 100) {
     promise = writeExperienceToDB(100);
-    endGame(true);
   } else {
     promise = writeExperienceToDB(currentPercents + amount);
   }
   return promise;
-}
-
-//to change
-function endGame(didWin) {
-  stopLifespanDecrease();
-  if (didWin) {
-    displayWinScreen();
-  } else {
-    displayLoseScreen();
-  }
-}
-
-function displayWinScreen() {
-  console.log("You won!");
-}
-
-function displayLoseScreen() {
-  console.log("You lost!");
 }
 
 //not used yet

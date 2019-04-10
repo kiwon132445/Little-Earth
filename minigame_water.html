@@ -93,7 +93,9 @@
                             experienceUpdated.then(function(){
                                 increaseLifespan(25).then(function(){
                                     let win = new Promise(function(resolve, reject) {
-                                        setTimeout(() => resolve(alert("You won! Earth gains back 25000 years of its lifespan")), 100);
+                                        setTimeout(() => resolve(alert(
+                                            "You won! \nEarth gains back 25000 years of its lifespan and 10 percents of experience."
+                                            )), 100);
                                     });
                                     win.then(
                                         result => window.location.href = "main.html"
@@ -107,7 +109,7 @@
                         if (valveWidth > 0 && waterLevelHeight >= 100) {
                             decreaseLifespan(15).then(function(){
                                 let lose = new Promise(function(resolve, reject) {
-                                    setTimeout(() => resolve(alert("You Lost! Earth lost 15000 years of its lifespan")), 100);
+                                    setTimeout(() => resolve(alert("You Lost! Earth lost 15000 years of its lifespan.")), 100);
                                 });
                                 lose.then(
                                     result => window.location.href = "main.html"
@@ -116,7 +118,7 @@
                         }
                     }
                     function exitButton() {
-                        let exitConfirm = confirm("Earth will lose 15000 points of its lifespan. \nWill you exit game?");
+                        let exitConfirm = confirm("Earth will lose 15000 years of its lifespan. \nWill you exit game?");
                         if (exitConfirm == true) {
                             decreaseLifespan(15).then(function(){
                                 window.location.href = "main.html";
