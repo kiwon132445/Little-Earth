@@ -14,7 +14,81 @@ body, html {
   box-sizing: border-box;
 }
 
-#container {}
+/****GAME OVER MODAL WINDOW***/
+
+.modal {
+  background-color: rgba(46, 120, 166, 1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-width: 100%;
+  height: 600px;
+  max-height: 100%;
+  z-index: 1010;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.modalText {
+  display: flex;
+  flex-direction: column;
+}
+
+.alignRight {
+  align-self: flex-end;
+}
+
+.modalControls {
+  min-width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modalButton {
+  border: 1px solid silver;
+  height: 80px;
+  width: 140px;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+  text-align: center;
+  line-height: 80px;
+}
+
+.modalButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.modalButton:active {
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#restartModalBtn {
+  background-color: rgb(242, 152, 73);;
+}
+
+.modalOverlay {
+  background-color: rgba(12, 18, 38, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.closed {
+  display: none;
+}
 
 /***TOP ROW********************************/
 
@@ -59,7 +133,7 @@ body, html {
 .speech-bubble {
   position: relative;
   min-height: 15vh;
-  top: 5vh;
+  top: 15vh;
   /* background: #00aabb; */
   background: rgba(46, 120, 166, 1);
   /* background: rgba(20, 57, 89, 1); */
@@ -197,7 +271,7 @@ body, html {
 
 .rightpopuptext {
   visibility: hidden;
-  width: 300px;
+  width: 180px;
   background-color: grey;
   color: black;
   text-align: center;
@@ -206,7 +280,7 @@ body, html {
   position: absolute;
   z-index: 1;
   left: 120%;
-  top: 20%;
+  top: 0%;
   border: 1px solid black;
 }
 

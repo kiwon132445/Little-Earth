@@ -10,43 +10,90 @@
             subscribeForDbLifespanChange(checkIfLose);
             subscribeForDbExperienceChange(checkIfWin);
             start();
-            handleWaterActionBtnClick();
+            subscribeForWaterActionBtnClick();
+            subscribeForSignOutClick();
 
         });
 
     });
 
+    function subscribeForSignOutClick() {
+        document.getElementById("signOutBtn").addEventListener("click", signOut);
+    }
+
+    function subscribeForModalSignOutClick() {
+        document.getElementById("signOutModalBtn").addEventListener("click", function () {
+            resetScores().then(signOut);
+        });
+    }
+
+    function subscribeForModalRestartClick() {
+        document.getElementById("restartModalBtn").addEventListener("click", function () {
+            restartGame();
+            hideModal();
+        });
+    }
+
+    function signOut() {
+        firebase.auth().signOut().then(function () {
+            localStorage.clear();
+            window.location.href = "index.html";
+        });
+    }
+
     function displayUserName(userName) {
         document.getElementById("userName").append(userName + "!");
     }
 
-    function handleWaterActionBtnClick() {
+    function subscribeForWaterActionBtnClick() {
         $("#actionWater").click(function (e) {
             console.log("Water action clicked");
             window.location.href = "minigame_water.html";
         });
     }
 
-    function checkIfWin(experience){
-        if (experience >= 100){
-            stopLifespanDecrease();            
+    function checkIfWin(experience) {
+        if (experience >= 100) {
+            stopLifespanDecrease();
             winTheGame();
         }
     }
 
-    function checkIfLose(lifespan){
-        if (lifespan <= 0){
-            stopLifespanDecrease();            
+    function checkIfLose(lifespan) {
+        if (lifespan <= 0) {
+            stopLifespanDecrease();
             loseTheGame();
         }
     }
 
-    function winTheGame(){
+    function winTheGame() {
         console.log("You won!");
+        let winText = "Yay, you saved me!<br/>Thank you so much!<br/>You are my hero!"
+        endGame(winText);
     }
 
-    function loseTheGame(){
+    function endGame(finalText) {
+        showModal(finalText);
+        subscribeForModalSignOutClick();
+        subscribeForModalRestartClick();
+    }
+
+    function loseTheGame() {
         console.log("You lost!");
+        let loseText = "Whoops!<br/>That didn’t work out this time. <br/>Do you wanna give it another try?"
+        endGame(loseText);
+    }
+
+    function hideModal() {
+        $("#modal").addClass("closed");
+        $("#modalOverlay").addClass("closed");
+    }
+
+    function showModal(finalText) {
+        $("#finalText").empty();
+        $("#finalText").append(finalText);
+        $("#modal").removeClass("closed");
+        $("#modalOverlay").removeClass("closed");
     }
 
     function displayLifespan(width) {
@@ -81,7 +128,7 @@
         experience.style.width = width + '%';
 
         var experienceText = document.getElementById("experienceText");
-        experienceText.innerHTML = width + (width==1 ? ' percent' : ' percents');
+        experienceText.innerHTML = width + (width == 1 ? ' percent' : ' percents');
     }
 
 })();

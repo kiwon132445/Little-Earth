@@ -12,6 +12,11 @@ function start() {
   startLifespanDecrease();
 }
 
+function restartGame() {
+  resetScores();
+  start();
+}
+
 // Returns a promise when updates are complete.
 function decreaseLifespan(amount = 1) {
   let promise;
@@ -49,9 +54,9 @@ function increaseExperience(amount = 10) {
   return promise;
 }
 
-//not used yet
+// Returns a promise when updates are complete.
 function resetScores() {
-  writeToDB(startScoreValues);
+  return writeToDB(startScoreValues);
 }
 
 //********TIMER***********************************/
