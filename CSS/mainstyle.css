@@ -1,7 +1,8 @@
 html {
-    background-image: url(./images/i98vXju.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url(./images/i98vXju.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
 }
 
 body, html {
@@ -12,3 +13,426 @@ body, html {
 * {
   box-sizing: border-box;
 }
+
+/****GAME OVER MODAL WINDOW***/
+
+.modal {
+  background-color: rgba(46, 120, 166, 1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-width: 100%;
+  height: 600px;
+  max-height: 100%;
+  z-index: 1010;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.modalText {
+  display: flex;
+  flex-direction: column;
+}
+
+.alignRight {
+  align-self: flex-end;
+}
+
+.modalControls {
+  min-width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modalButton {
+  border: 1px solid silver;
+  height: 80px;
+  width: 140px;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+  text-align: center;
+  line-height: 80px;
+}
+
+.modalButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.modalButton:active {
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#restartModalBtn {
+  background-color: rgb(242, 152, 73);;
+}
+
+.modalOverlay {
+  background-color: rgba(12, 18, 38, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.closed {
+  display: none;
+}
+
+/***TOP ROW********************************/
+
+#mainTop {
+  height: 10vh;
+  padding: 5px;
+}
+
+#userName {
+  color: white;
+  font-size: 14pt;
+  margin-left: 1em;
+}
+
+#signOutBtn {
+  margin-left: 1em;
+}
+
+/***MIDDLE ROW*****************************/
+
+#mainMiddle {
+  height: 65vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+/*For debug only*/
+
+.middle {
+  /*          border: 1px solid red;*/
+}
+
+/*---LEFT COLUMN-------------------------*/
+
+.middleLeft {
+  /* width: 250px; */
+  /*to center the earth and the meter*/
+}
+
+/* Speech bubble */
+
+.speech-bubble {
+  position: relative;
+  min-height: 15vh;
+  top: 15vh;
+  /* background: #00aabb; */
+  background: rgba(46, 120, 166, 1);
+  /* background: rgba(20, 57, 89, 1); */
+  /* background: rgba(12, 18, 38, 1); */
+  border-radius: .4em;
+  /* color: rgb(242, 152, 73); */
+  color: rgb(242, 231, 80);
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 80%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  /* border-left-color: #00aabb; */
+  /* border-left-color: rgba(20, 57, 89, 1); */
+  border-left-color: rgba(46, 120, 166, 1);
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-right: -20px;
+}
+
+/*---CENTRE COLUMN-------------------------*/
+
+.middleCentre {
+  display: flex;
+  align-items: center;
+}
+
+.earthImgContainer {}
+
+#earthImg {
+  width: auto;
+  height: 45vh;
+  clip-path: circle(50%);
+}
+
+/*---RIGHT COLUMN-------------------------*/
+
+.middleRight {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.buttonMargin {
+  margin: 3pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.actionBtn {
+  border: 1px solid silver;
+  height: 70px;
+  width: 70px;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.actionBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.actionBtn:active {
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.actionElectricity {
+  background-image: url("images/electricity-icon.png");
+}
+
+.actionWater {
+  background-image: url("images/water-icon.png");
+}
+
+.actionBiodiversity {
+  background-image: url("images/ladybug-icon.png");
+}
+
+.actionSetting {
+  background-color: silver;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+/*popup*/
+
+.popup {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+  line-height: 15pt;
+}
+
+/*Left popup content*/
+
+.popuptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: burlywood;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5pt;
+  position: absolute;
+  z-index: 1;
+  right: 120%;
+  border: 1px solid black;
+}
+
+/*Left popup arrow*/
+
+.popuptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent burlywood;
+}
+
+.rightpopuptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: grey;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5pt;
+  position: absolute;
+  z-index: 1;
+  left: 120%;
+  top: 0%;
+  border: 1px solid black;
+}
+
+/*popup arrow on left of popup*/
+
+.rightpopuptext::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 100%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent grey transparent transparent;
+}
+
+/*popup show*/
+
+.popup .show {
+  visibility: visible;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/***BOTTOM ROW*****************************/
+
+#mainBottom {
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.meter {
+  max-width: 400px;
+  width: 50vw;
+  height: 40px;
+  padding: 7px;
+  border-radius: 25px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  background-color: rgba(12, 18, 38, 1);
+  transition: all 0.2s ease 0s;
+}
+
+#lifespan, #experience {
+  width: 25%;
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.flexbox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.label {
+  color: whitesmoke;
+  font-size: 18pt;
+  margin-right: 5pt;
+}
+
+.blue {
+  background-color: rgb(46, 120, 166);
+  background-image: linear-gradient(skyblue 30%, rgb(46, 120, 166) 70%);
+}
+
+.green {
+  background-color: #71AF2A;
+  background-image: linear-gradient(rgb(156, 216, 86) 30%, #71AF2A 70%);
+}
+
+.yellow {
+  background-color: rgb(242, 231, 80);
+  background-image: linear-gradient(rgb(247, 239, 131) 30%, rgb(242, 231, 80) 70%);
+}
+
+.orange {
+  background-color: rgb(242, 152, 73);
+  background-image: linear-gradient(rgb(247, 180, 122) 30%, rgb(242, 152, 73) 70%);
+}
+
+.red {
+  background-color: red;
+  background-image: linear-gradient(tomato 30%, red 70%);
+}
+
+.backgroundBox {
+  /* background-color: rgba(117, 188, 240, 0.5); */
+  background-color: rgba(46, 120, 166, 0.7); /*blue*/
+  /* background-color: rgba(20, 57, 89, 0.9); dark blue*/ 
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/******************TEXT*******************/
+
+.whiteText {
+  color: white;
+  font-size: 18pt;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.largeText {
+  font-size: 24pt;
+}
+
+.padding10px {
+  padding: 10px;
+}
+
+.signature {
+  font-size: 14pt;
+  line-height: 2em;
+  float: right;
+  font-style: italic;
+}
+
+/****COLORS TO USE*********************************/
+
+/* Earth blue */
+/* HTML code:	#75BCF0
+RGB code:	R: 117 G: 188 B: 240 */
+
+/* Earth green */
+/* HTML code:	#71AF2A
+RGB code:	R: 113 G: 175 B: 42 */
+
+/* darkest blue */
+/* rgba(12, 18, 38, 1); */
+
+/* dark blue */
+/* rgba(20, 57, 89, 0.9); */
+
+/* blue */
+/* rgba(46, 120, 166, 0.7); */
+
+/* yellow */
+/* rgb(242, 231, 80) */
+
+/* orange */
+/* rgb(242, 152, 73); */

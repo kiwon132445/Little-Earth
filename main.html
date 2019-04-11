@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Little Earth</title>
-    <link rel="stylesheet" href="./CSS/mainstyle.css">
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />  
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-    <script src="./JS/setup_firebase.js"></script>
-    <script src="./JS/create_user.js"></script>
+  <meta charset="UTF-8">
+  <title>Little Earth</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+  <link rel="stylesheet" href="./CSS/mainstyle.css">
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="./JS/setup_firebase.js"></script>
   <style>
+<<<<<<< HEAD
     
     #container{
 
@@ -179,42 +183,102 @@
           padding-left: 1vw;
         }
    
+=======
+>>>>>>> 2cbdfeeaf0d2c24f46204a8c3cbf82b28596dc19
   </style>
 </head>
+
 <body>
   <div id="container">
     <div id="mainTop">
-      <p id="userName">Hi, </p>
-      <button id="signOutBtn">Sign Out</button>
+      <div class="popup actionSetting actionBtn" onclick="popupSetting()">
+        <img class="actionBtn" src="https://img.icons8.com/wired/64/000000/services.png" alt="">
+        <div class="rightpopuptext" id="popupsetting">
+          <p id="userName">Hi, </p>
+          <button id="signOutBtn">Sign Out</button>
+        </div>
+      </div>
     </div>
     <div id="mainMiddle">
-      <div class="middleLeft middle"></div>
+      <div class="middleLeft middle">
+        <div class="speech-bubble">
+          <div class="largeText padding10px">
+            <div>Keep me alive!<br/><span class="signature">Your Little Earth</span></div>
+          </div>
+        </div>
+      </div>
       <div class="middleCentre middle">
         <div class="earthImgContainer">
           <img id="earthImg" src="CSS/images/earth.gif" alt="Main character. Little Earth.">
         </div>
       </div>
       <div class="middleRight middle">
-        <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
-          <span class="popuptext" id="myPopup1">something</span>
-        </div>
-        <div class="actionBtn actionWater popup" onmouseover="popup2()" onmouseout="popup2()">
-            <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water for the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
-        </div>
-        <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
-            <span class="popuptext" id="myPopup3">something</span>
+        <div class="backgroundBox">
+          <span class="whiteText largeText">Mini games </span>
+
+          <div class="buttonMargin">
+            <span class="label">Energy</span>
+            <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
+              <span class="popuptext" id="myPopup1">something</span>
+            </div>
+          </div>
+
+          <div class="buttonMargin">
+            <span class="label">Water</span>
+            <div id="actionWater" class="actionBtn actionWater popup" onmouseover="popup2()" onmouseout="popup2()">
+              <span class="popuptext" id="myPopup2">An evil steel manufacturing business person is thirsty of securing a
+                freshwater source. They are trying to turn on the tap to divert our valuable source of drinking water
+                for
+                the factory. Hurry! Stop it by tapping fast to the water tap/faucet.</span>
+            </div>
+          </div>
+
+          <div class="buttonMargin">
+            <span class="label">Biodiversity</span>
+            <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
+              <span class="popuptext" id="myPopup3">something</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div id="mainBottom">
-      <div>
-        <div class="meter whiteCenteredText"><span id="lifespan"></span></div>
-        <div id="lifespanText" class="whiteText">25,000 years</div>
+      <div class="backgroundBox" style="padding:10pt;">
+        <div>
+          <div class="flexbox">
+            <span class="label">Lifespan: </span>
+            <div>
+              <div class="meter whiteCenteredText"><span id="lifespan" class="green"></span></div>
+              <div id="lifespanText" class="whiteText">25,000 years</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flexbox">
+            <span class="label">Experience: </span>
+            <div>
+              <div class="meter whiteCenteredText"><span id="experience" class="blue"></span></div>
+              <div id="experienceText" class="whiteText">0 percents</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>  
+  </div>
+  <div class="modal closed" id="modal">
+    <div class="modalText whiteText largeText padding10px" id="modalText">
+      <div id="finalText"></div>
+      <span class="signature alignRight">Your Little Earth</span>
+    </div>
+    <div class="modalControls">
+      <div class="modalButton whiteText" id="signOutModalBtn">Sign Out</div>
+      <div class="modalButton whiteText" id="restartModalBtn">Restart</div>
+    </div>
+  </div>
+  <div class="modalOverlay closed" id="modalOverlay"></div>
+  <script src="./JS/game_logic.js"></script>
+  <script src="./JS/popup.js"></script>
+  <script src="./JS/main_page.js"></script>
 </body>
-<script src="./JS/update_lifespan.js"></script>
-<script src="./JS/popup.js"></script>
-<script src="./JS/sign_out.js"></script>  
+
 </html>
