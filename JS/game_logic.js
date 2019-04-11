@@ -13,6 +13,7 @@ function start() {
 }
 
 function restartGame() {
+  stopLifespanDecrease();
   resetScores();
   start();
 }
