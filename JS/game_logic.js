@@ -1,3 +1,8 @@
+/**
+ * This file holds all the functions that are needed to implement game logic.
+ * It is page independent and can be used on different pages.
+ */
+
 var lifespanDecreaseId;
 
 const startScoreValues =
@@ -6,19 +11,21 @@ const startScoreValues =
   "experience": 0
 };
 
-//to start the game
+//To start the game.
 function start() {
   writeScoresfromDbToLocalStorage();
   startLifespanDecrease();
 }
 
+//To restart the game.
 function restartGame() {
   stopLifespanDecrease();
   resetScores();
   start();
 }
 
-// Returns a promise when updates are complete.
+//Decreases the lifespan and writes the changes to db.
+//Returns a promise when updates are complete.
 function decreaseLifespan(amount = 1) {
   let promise;
   let currentPercents = getLifespan();
@@ -31,7 +38,8 @@ function decreaseLifespan(amount = 1) {
   return promise;
 }
 
-// Returns a promise when updates are complete.
+//Increases the lifespan and writes the changes to db.
+//Returns a promise when updates are complete.
 function increaseLifespan(amount = 25) {
   let promise;
   let currentPercents = getLifespan();
@@ -43,7 +51,8 @@ function increaseLifespan(amount = 25) {
   return promise;
 }
 
-// Returns a promise when updates are complete.
+//Increases the experience and writes the changes to db.
+//Returns a promise when updates are complete.
 function increaseExperience(amount = 10) {
   let promise;
   let currentPercents = getExperience();
@@ -55,49 +64,55 @@ function increaseExperience(amount = 10) {
   return promise;
 }
 
-// Returns a promise when updates are complete.
+//Resets scores to the default values. Lifespan - 50, experience - 0.
+//Returns a promise when updates are complete.
 function resetScores() {
   return writeToDB(startScoreValues);
 }
 
 //********TIMER***********************************/
 
+//Starts countdown.
+//1% in 1sec;
 function startLifespanDecrease() {
   lifespanDecreaseId = setInterval(decreaseLifespan, 1000); //1% in 1sec;
 }
 
+//Stops countdown.
 function stopLifespanDecrease() {
   clearInterval(lifespanDecreaseId);
 }
 
 //********LOCAL STORAGE***********************************/
 
-//Returns lifespan as int from localStorage
+//Returns lifespan as int from localStorage.
 function getLifespan() {
   return parseInt(localStorage.getItem("lifespan"));
 }
 
-//Returns experience as int from localStorage
+//Returns experience as int from localStorage.
 function getExperience() {
   return parseInt(localStorage.getItem("experience"));
 }
 
-//Returns user name from localStorage
+//Returns user name from localStorage.
 function getUserName() {
   return localStorage.getItem("name");
 }
 
+//Sets a lifespan value to local storage.
 function updateLocalStorageLifespan(percents) {
   localStorage.setItem("lifespan", percents);
 }
 
+//Sets an experience value to local storage.
 function updateLocalStorageExperience(percents) {
   localStorage.setItem("experience", percents);
 }
 
 //********DATABASE***********************************/
 
-// Creates new user.
+// Creates new user if it doesn't exist.
 function initializeUser(callback) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -123,6 +138,7 @@ function initializeUser(callback) {
   });
 }
 
+//Subscribes for changes of lifespan value.
 function subscribeForDbLifespanChange(onLifeSpanChange) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -138,6 +154,7 @@ function subscribeForDbLifespanChange(onLifeSpanChange) {
   });
 }
 
+//Subscribes for changes of experience value.
 function subscribeForDbExperienceChange(onExperienceChange) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -153,22 +170,22 @@ function subscribeForDbExperienceChange(onExperienceChange) {
   });
 }
 
-// Takes lifespan and experience scores from db and writes to local storage.
+//Takes lifespan and experience scores from db and writes to local storage.
 function writeScoresfromDbToLocalStorage() {
   subscribeForDbLifespanChange(updateLocalStorageLifespan);
   subscribeForDbExperienceChange(updateLocalStorageExperience);
 }
 
-// Parameter updatesForCurrentUser accepts an object, with key-value pairs,
-// where key is a key in DB under "users/userUID" node, 
-// and value - the new value to write.
-// Returns a promise when updates are complete.
+//Parameter updatesForCurrentUser accepts an object, with key-value pairs,
+//where key is a key in DB under "users/userUID" node, 
+//and value - the new value to write.
+//Returns a promise when updates are complete.
 function writeToDB(updatesForCurrentUser) {
-  let onUpdatesComplete = new Promise(function(resolve, reject){
+  let onUpdatesComplete = new Promise(function (resolve, reject) {
 
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-       firebase.database().ref("users/" + user.uid).update(updatesForCurrentUser, resolve);
+        firebase.database().ref("users/" + user.uid).update(updatesForCurrentUser, resolve);
       }
     });
 
@@ -176,12 +193,14 @@ function writeToDB(updatesForCurrentUser) {
   return onUpdatesComplete;
 }
 
-// Returns a promise when updates are complete.
+//Writes lifespan value to the db.
+//Returns a promise when updates are complete.
 function writeLifespanToDB(percents) {
   return writeToDB({ "lifespan": percents });
 }
 
-// Returns a promise when updates are complete.
+//Writes experience value to the db.
+//Returns a promise when updates are complete.
 function writeExperienceToDB(percents) {
   return writeToDB({ "experience": percents });
 }

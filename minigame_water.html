@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Stop the water!</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
-        <link rel="stylesheet" href="./CSS/minigameWater.css">
-        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-        <script src="./JS/setup_firebase.js"></script>
-    </head>
-    <body>
-        <div class="main">
-            <div class="horizontal">
-                <img id="tap" src="./CSS/images/watertap.png" alt="game">
-                <div class="water"><div id="waterFlow" style="width:100%;"></div></div>
-                <div class="remainingWaterBar"><div class="remainingWater" style="height:0%;"></div></div>
-                <button type="button" class="exit" onclick="exitButton()">X</button>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stop the water!</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/minigameWater.css">
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script src="./JS/setup_firebase.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="horizontal">
+            <img id="tap" src="./CSS/images/watertap.png" alt="game">
+            <div class="water">
+                <div id="waterFlow" style="width:100%;"></div>
             </div>
-            <div class="buttons">
-                <h1>Close the tap! Every drop counts!</h1>
-                <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
-                <button type="button" onclick="closeTap()" class="gameB">Close the Tap!</button>
+            <div class="remainingWaterBar">
+                <div class="remainingWater" style="height:0%;"></div>
             </div>
-            <div class="valveLevelBar">
-                <div id="valveLevel" style="width:100%;">
-                </div>
+            <button type="button" class="exit" onclick="exitButton()">X</button>
+        </div>
+        <div class="buttons">
+            <h1>Close the tap! Every drop counts!</h1>
+            <button type="button" onclick="openTap()" class="gameB">Open the Tap!</button>
+            <button type="button" onclick="closeTap()" class="gameB">Close the Tap!</button>
+        </div>
+        <div class="valveLevelBar">
+            <div id="valveLevel" style="width:100%;">
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
-        <script src="./JS/game_logic.js"></script>
-        <script src="./JS/waterGame.js"></script>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+    <script src="./JS/game_logic.js"></script>
+    <script src="./JS/waterGame.js"></script>
+</body>
+
 </html>

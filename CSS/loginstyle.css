@@ -3,19 +3,21 @@ html {
     background-size: cover;
     background-repeat: no-repeat
 }
+
 body {
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
 #loginCenter {
-    margin-top:20pt;
+    margin-top: 20pt;
     border-radius: 10%;
-    width:100%;
-    display:grid;
+    width: 100%;
+    display: grid;
     grid-template-columns: 40px [centerLeft]auto[centerRight] 40px;
     grid-template-rows: 100pt [centerTop]500pt[centerBottom] auto;
 }
+
 .center {
     grid-column-start: centerLeft;
     grid-row-start: centerTop;
@@ -23,15 +25,15 @@ body {
 
 #close {
     border-radius: 15%;
-    width:30pt;
-    height:30pt;
+    width: 30pt;
+    height: 30pt;
     grid-column-start: centerRight;
 }
 
 footer {
     position: fixed;
-    left:0;
+    left: 0;
     bottom: 0;
-    width:100%;
-    color:greenyellow;
+    width: 100%;
+    color: greenyellow;
 }

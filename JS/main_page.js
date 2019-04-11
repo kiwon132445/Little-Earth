@@ -1,5 +1,11 @@
+/**
+ * Main page driver. Manages all the events, logic and display that happens on the main page.
+ * Game starts here.
+ */
+
 (function () {
 
+    // All game logic happens here.
     $(document).ready(function () {
 
         initializeUser(function () {
@@ -66,29 +72,34 @@
         }
     }
 
+    // Inserts winning text and shows the end game screen.
     function winTheGame() {
         console.log("You won!");
         let winText = "Yay, you saved me!<br/>Thank you so much!<br/>You are my hero!"
         endGame(winText);
     }
 
+    // To end the game.
     function endGame(finalText) {
         showModal(finalText);
         subscribeForModalSignOutClick();
         subscribeForModalRestartClick();
     }
 
+    // Inserts losing text and shows the end game screen.
     function loseTheGame() {
         console.log("You lost!");
         let loseText = "Whoops!<br/>That didn’t work out this time. <br/>Do you wanna give it another try?"
         endGame(loseText);
     }
 
+    // Hides game over screen.
     function hideModal() {
         $("#modal").addClass("closed");
         $("#modalOverlay").addClass("closed");
     }
 
+    // Shows game over screen.
     function showModal(finalText) {
         $("#finalText").empty();
         $("#finalText").append(finalText);
@@ -96,6 +107,7 @@
         $("#modalOverlay").removeClass("closed");
     }
 
+    // Renders lifespan meter.
     function displayLifespan(width) {
         const lifespan = document.getElementById("lifespan");
         const lifespanJQ = $("#lifespan");
@@ -129,6 +141,7 @@
         lifespanText.innerHTML = width + ',000 years';
     }
 
+    // Renders experience meter.
     function displayExperience(width) {
         const experience = document.getElementById("experience");
 

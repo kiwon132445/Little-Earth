@@ -27,7 +27,6 @@ body, html {
   height: 600px;
   max-height: 100%;
   z-index: 1010;
-
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -73,7 +72,8 @@ body, html {
 }
 
 #restartModalBtn {
-  background-color: rgb(242, 152, 73);;
+  background-color: rgb(242, 152, 73);
+  ;
 }
 
 .modalOverlay {
@@ -115,18 +115,7 @@ body, html {
   justify-content: space-around;
 }
 
-/*For debug only*/
-
-.middle {
-  /*          border: 1px solid red;*/
-}
-
 /*---LEFT COLUMN-------------------------*/
-
-.middleLeft {
-  /* width: 250px; */
-  /*to center the earth and the meter*/
-}
 
 /* Speech bubble */
 
@@ -151,8 +140,6 @@ body, html {
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  /* border-left-color: #00aabb; */
-  /* border-left-color: rgba(20, 57, 89, 1); */
   border-left-color: rgba(46, 120, 166, 1);
   border-right: 0;
   border-bottom: 0;
@@ -167,15 +154,13 @@ body, html {
   align-items: center;
 }
 
-.earthImgContainer {}
-
 #earthImg {
   width: auto;
   height: 45vh;
   transition: all 1s ease-in-out;
 }
 
-.clipped{
+.clipped {
   clip-path: circle(50%);
 }
 
@@ -385,9 +370,7 @@ body, html {
 }
 
 .backgroundBox {
-  /* background-color: rgba(117, 188, 240, 0.5); */
-  background-color: rgba(46, 120, 166, 0.7); /*blue*/
-  /* background-color: rgba(20, 57, 89, 0.9); dark blue*/ 
+  background-color: rgba(46, 120, 166, 0.7);
   border-radius: 10px;
   padding: 10px;
 }
@@ -419,24 +402,31 @@ body, html {
 /****COLORS TO USE*********************************/
 
 /* Earth blue */
+
 /* HTML code:	#75BCF0
 RGB code:	R: 117 G: 188 B: 240 */
 
 /* Earth green */
+
 /* HTML code:	#71AF2A
 RGB code:	R: 113 G: 175 B: 42 */
 
 /* darkest blue */
+
 /* rgba(12, 18, 38, 1); */
 
 /* dark blue */
+
 /* rgba(20, 57, 89, 0.9); */
 
 /* blue */
+
 /* rgba(46, 120, 166, 0.7); */
 
 /* yellow */
+
 /* rgb(242, 231, 80) */
 
 /* orange */
+
 /* rgb(242, 152, 73); */
