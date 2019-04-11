@@ -13,178 +13,6 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="./JS/setup_firebase.js"></script>
   <style>
-<<<<<<< HEAD
-    
-    #container{
-
-    }
-    
-    /***TOP ROW********************************/
-    #mainTop{
-      height: 25vh;
-    }
-    
-    #userName{
-      color: white;
-      font-size: 14pt;
-      margin-left: 1em;
-    }
-    
-    #signOutBtn{
-      margin-left: 1em;
-    }
-    
-    /***MIDDLE ROW*****************************/
-    #mainMiddle{
-      height: 50vh;
-      display: flex;
-      justify-content: space-around;
-    }
-    
-        /*For debug only*/
-        .middle{
-/*          border: 1px solid red;*/
-        }
-
-        /*---LEFT COLUMN-------------------------*/
-        .middleLeft {
-          width:50px; /*to center the earth and the meter*/
-        }
-
-        /*---CENTRE COLUMN-------------------------*/
-        .middleCentre{
-
-        }
-    
-            .earthImgContainer{
-
-            }
-
-            #earthImg{
-              width: auto;
-              height: 50vh;
-              clip-path: circle(100%); 
-            }
-
-        /*---RIGHT COLUMN-------------------------*/
-        .middleRight{
-          display: flex;
-          justify-content: space-evenly;
-          flex-direction: column;
-        }
-
-            .actionBtn{
-              border: 1px solid silver;
-              height: 50px;
-              width: 50px;
-              background-size: cover;
-              border-radius: 20px;
-              box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
-              cursor: pointer;
-              transition: all 0.2s ease 0s;
-            }
-
-            .actionBtn:hover{
-              transform: translateY(-2px);
-              box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
-            }
-
-            .actionBtn:active{
-              box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
-            }
-
-            .actionElectricity{
-              background-image: url("CSS/images/electricity-icon.png");
-            }
-
-            .actionWater{
-              background-image: url("CSS/images/water-icon.png");
-            }
-
-            .actionBiodiversity{
-              background-image: url("CSS/images/ladybug-icon.png");
-            }
-            /*popup*/
-            .popup {
-              position: relative;
-              display:flex;
-              cursor: pointer;
-              user-select:none;
-              align-items: center;
-              line-height: 15pt; 
-            }
-            /*popup content*/
-            .popuptext {
-              visibility:hidden;
-              width: 300px;
-              background-color:burlywood;
-              color:black;
-              text-align:center;
-              border-radius:6px;
-              padding:5pt;
-              position:absolute;
-              z-index:1;
-              right:120%;
-              border:1px solid black;
-            }
-            /*popup arrow*/
-            .popuptext::after {
-              content:"";
-              position:absolute;
-              top: 50%;
-              left: 100%;
-              border-width: 5px;
-              border-style: solid;
-              border-color: transparent transparent transparent burlywood;
-            }
-            /*popup show*/
-            .popup .show {
-              visibility: visible;
-              animation: fadeIn 0.5s;
-            }
-
-            @keyframes fadeIn {
-              from {opacity: 0;}
-              to {opacity:1 ;}
-            }
-    
-    /***BOTTOM ROW*****************************/
-    #mainBottom{
-      height: 25vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-        .meter{
-          width: 50vw;
-          height: 40px;
-          padding: 7px;
-          border-radius: 25px;
-          box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-          background-color: grey;
-        }
-
-        #lifespan{
-          width: 25%;
-          display: block;
-          height: 100%;     
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          background-color: limegreen;
-          background-image: linear-gradient(lime 30%, limegreen 70%);
-        }
-    
-        .whiteText {
-          color: white;
-          font-size: 18pt;
-          padding-left: 1vw;
-        }
-   
-=======
->>>>>>> 2cbdfeeaf0d2c24f46204a8c3cbf82b28596dc19
   </style>
 </head>
 
@@ -209,7 +37,7 @@
       </div>
       <div class="middleCentre middle">
         <div class="earthImgContainer">
-          <img id="earthImg" src="CSS/images/earth.gif" alt="Main character. Little Earth.">
+          <img id="earthImg" src="CSS/images/earth.jpg" alt="Main character. Little Earth.">
         </div>
       </div>
       <div class="middleRight middle">
@@ -219,7 +47,7 @@
           <div class="buttonMargin">
             <span class="label">Energy</span>
             <div class="actionBtn actionElectricity popup" onmouseover="popup1()" onmouseout="popup1()">
-              <span class="popuptext" id="myPopup1">something</span>
+              <span class="popuptext" id="myPopup1">In development</span>
             </div>
           </div>
 
@@ -236,7 +64,7 @@
           <div class="buttonMargin">
             <span class="label">Biodiversity</span>
             <div class="actionBtn actionBiodiversity popup" onmouseover="popup3()" onmouseout="popup3()">
-              <span class="popuptext" id="myPopup3">something</span>
+              <span class="popuptext" id="myPopup3">In development</span>
             </div>
           </div>
         </div>

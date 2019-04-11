@@ -99,6 +99,8 @@
     function displayLifespan(width) {
         const lifespan = document.getElementById("lifespan");
         const lifespanJQ = $("#lifespan");
+        const earthImage = document.getElementById("earthImg");
+        const earthImageJQ = $("#earthImg");
 
         if (width > 97) {
             lifespan.style.borderRadius = '20px';
@@ -106,12 +108,20 @@
         lifespan.style.width = width + '%';
 
         if (width < 15) {
+            earthImageJQ.removeClass("clipped");
+            earthImage.src = "CSS/images/sad.png";
             lifespanJQ.removeClass().addClass("red");
         } else if (width < 30) {
+            earthImageJQ.removeClass("clipped");
+            earthImage.src = "CSS/images/neutral.png";
             lifespanJQ.removeClass().addClass("orange");
         } else if (width < 60) {
+            earthImageJQ.addClass("clipped");
+            earthImage.src = "CSS/images/earth.jpg";
             lifespanJQ.removeClass().addClass("yellow");
         } else {
+            earthImageJQ.removeClass("clipped");
+            earthImage.src = "CSS/images/happy.png";
             lifespanJQ.removeClass().addClass("green");
         }
 

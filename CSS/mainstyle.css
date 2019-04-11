@@ -172,6 +172,10 @@ body, html {
 #earthImg {
   width: auto;
   height: 45vh;
+  transition: all 1s ease-in-out;
+}
+
+.clipped{
   clip-path: circle(50%);
 }
 

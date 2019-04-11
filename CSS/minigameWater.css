@@ -1,108 +1,141 @@
 body {
-    margin:0;
-    background-image: url("./images/i98vXju.jpg")
+    margin: 0;
+    background-image: url("./images/i98vXju.jpg");
+    font-family: 'Roboto', sans-serif;
 }
+
 /*Design*/
+
 .horizontal {
-    display:flex;
-    height:400pt
+    display: flex;
+    height: 400pt
 }
+
 #tap {
-    width:768px;
-    margin-top:-170px;
+    width: 768px;
+    margin-top: -170px;
     z-index: 0;
 }
+
 .water {
-    position:absolute;
-    width:60pt;
-    height:91pt;
-    top:58pt;
-    left:309pt;
+    position: absolute;
+    width: 60pt;
+    height: 91pt;
+    top: 58pt;
+    left: 309pt;
 }
+
 #waterFlow {
-    background-color:aqua;
-    height:100%;
+    background-color: aqua;
+    height: 100%;
 }
+
 /*Buttons*/
+
 .buttons {
-    position:absolute;
-    top:160pt;
-    left:100pt;
+    position: absolute;
+    top: 160pt;
+    left: 100pt;
 }
+
+.buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.7);
+}
+
+.buttons button:active {
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 .buttons button {
-    width:100pt;
-    height:100pt;
-    background-color:antiquewhite;
+    border: 1px solid silver;
+    height: 140px;
+    width: 140px;
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    text-align: center;
+    font-size: 18pt;
 }
+
 /*Remaining water bar*/
+
 .remainingWaterBar {
-    margin-top:50pt;
-    width:50pt;
-    height:300pt;
-    border:3px solid yellow;
-    margin-left:10pt;
-    background-color:aqua;
+    margin-top: 50pt;
+    width: 50pt;
+    height: 300pt;
+    border: 3px solid yellow;
+    margin-left: 10pt;
+    background-color: aqua;
 }
+
 .remainingWater {
     background-color: black;
-    
 }
+
 /*Valve bar*/
+
 .valveLevelBar {
-    height:50pt;
-    width:500pt;
-    border:3px solid green;
-    background-color:grey;
+    height: 50pt;
+    width: 500pt;
+    border: 3px solid green;
+    background-color: grey;
     margin-left: 20pt;
 }
+
 #valveLevel {
-    height:100%;
+    height: 100%;
     background-color: black;
     z-index: 1;
 }
+
 /*close button*/
+
 .exit {
-    position:absolute;
-    top:5pt;
-    right:5pt;
-    width:30pt;
-    height:30pt;
+    position: absolute;
+    top: 5pt;
+    right: 5pt;
+    width: 30pt;
+    height: 30pt;
     font-size: 20pt;
-    border:2px solid black;
+    border: 2px solid black;
 }
+
 @media screen and (max-width:950px) {
     #tap {
-        width:400pt;
-        margin-top:-130px;
-        height:400pt;
+        width: 400pt;
+        margin-top: -130px;
+        height: 400pt;
     }
     .water {
-        width:40pt;
-        top:44pt;
-        left:215pt;
-        height:68pt;
+        width: 40pt;
+        top: 44pt;
+        left: 215pt;
+        height: 68pt;
     }
     .buttons {
-        top:120pt;
-        left:70pt;
+        top: 120pt;
+        left: 70pt;
     }
     .buttons h1 {
         font-size: 10pt;
     }
     .buttons button {
-        width:70pt;
-        height:70pt;
+        width: 70pt;
+        height: 70pt;
     }
     .remainingWaterBar {
-        margin-top:30pt;
-        width:40pt;
-        height:200pt;
-        margin-left:10pt;
+        margin-top: 30pt;
+        width: 40pt;
+        height: 200pt;
+        margin-left: 10pt;
     }
     .valveLevelBar {
-        height:40pt;
-        width:350pt;
-        margin-left:10pt;
-        margin-top:-100pt;
+        height: 40pt;
+        width: 350pt;
+        margin-left: 10pt;
+        margin-top: -100pt;
     }
 }
